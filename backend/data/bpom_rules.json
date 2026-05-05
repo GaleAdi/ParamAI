@@ -1,0 +1,1549 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2026-05-05",
+  "source_regulations": [
+    "PerBPOM No. 34/2019 - Food Category Taxonomy",
+    "PerBPOM No. 16/2016 - Microbiological Standards",
+    "PerBPOM No. 5/2018 - Heavy Metal Contamination Limits",
+    "PerBPOM No. 22/2019 - Nutrition Labeling",
+    "PerBPOM No. 11/2020 - Health Supplement Registration",
+    "PerBPOM No. 13/2020 - Food Additive Approval",
+    "SNI 01-2973-2011 - Biscuit Standards",
+    "SNI 01-3719-1995 - Fruit Juice and Nectar",
+    "SNI 2981:2009 - Fermented Milk Products (Yogurt)",
+    "SNI 01-4620-1998 - Canned Meat Products"
+  ],
+  "categories": {
+    "07.1": {
+      "category_code": "07.1",
+      "category_name": "Crackers, Cookies and Biscuits",
+      "parent_code": "07",
+      "description": "Baked cereal-based products including biscuits, crackers, cookies, wafers, and similar products",
+      "keywords": {
+        "product_names": ["biscuit", "cookie", "cracker", "wafer", "biskuit", "kukis", "roti kering", "chocolate biscuit", "sandwich biscuit"],
+        "ingredients": ["flour", "tepung", "wheat flour", "oat flour", "fat", "lemak", "margarine", "sugar", "gula", "cocoa", "chocolate", "milk powder", "susu bubuk", "eggs", "telur", "honey", "madu", "salt", "garam", "baking powder"],
+        "production_methods": ["baked", "dipanggang", "oven", "frying", "goreng", "deep fried", "penggorengan"],
+        "health_claims": ["high fiber", "serat tinggi", "low sugar", "gula rendah", "whole grain", "nabat", "no preservatives", "tanpa pengawet"]
+      },
+      "parameters": [
+        {
+          "id": "07.1_chem_001",
+          "name": "Moisture Content",
+          "standard": "Maximum 5% (biscuit), Maximum 8% (cracker)",
+          "regulation": "PerBPOM No. 34/2019 Clause 4.1; SNI 01-2973-2011 Section 3.1",
+          "type": "chemical",
+          "test_method": "Gravimetric oven method at 105°C",
+          "notes": "Critical for shelf life stability"
+        },
+        {
+          "id": "07.1_chem_002",
+          "name": "Ash Content",
+          "standard": "Maximum 2% (wheat flour base)",
+          "regulation": "SNI 01-2973-2011 Section 3.2",
+          "type": "chemical",
+          "test_method": "Incineration at 550°C",
+          "notes": "Indicator of mineral content"
+        },
+        {
+          "id": "07.1_chem_003",
+          "name": "Ash Insolubility in HCl",
+          "standard": "Maximum 0.1%",
+          "regulation": "SNI 01-2973-2011 Section 3.2",
+          "type": "chemical",
+          "test_method": "Acid insoluble ash test",
+          "notes": "Indicator of sand/dirt contamination"
+        },
+        {
+          "id": "07.1_chem_004",
+          "name": "Fat Content",
+          "standard": "Minimum 9.5% (semi-sweet biscuit), Minimum 3% (cracker)",
+          "regulation": "SNI 01-2973-2011 Section 3.3",
+          "type": "chemical",
+          "test_method": "Soxhlet extraction",
+          "notes": "Varies by product type"
+        },
+        {
+          "id": "07.1_chem_005",
+          "name": "Protein Content",
+          "standard": "Minimum 5% (plain biscuit), Minimum 7% (milk biscuit)",
+          "regulation": "SNI 01-2973-2011 Section 3.4",
+          "type": "chemical",
+          "test_method": "Kjeldahl method (N x 6.25)",
+          "notes": "Higher for fortified products"
+        },
+        {
+          "id": "07.1_chem_006",
+          "name": "Total Sugar as Sucrose",
+          "standard": "Maximum 35% (sweet biscuit)",
+          "regulation": "SNI 01-2973-2011 Section 3.5",
+          "type": "chemical",
+          "test_method": "Lane-Eynon titration",
+          "notes": "Varies by product category"
+        },
+        {
+          "id": "07.1_chem_007",
+          "name": "Acidity (as tartaric acid)",
+          "standard": "Maximum 0.5%",
+          "regulation": "SNI 01-2973-2011 Section 3.6",
+          "type": "chemical",
+          "test_method": "Titration with NaOH",
+          "notes": "For acidic variants"
+        },
+        {
+          "id": "07.1_chem_008",
+          "name": "Fluorine Content",
+          "standard": "Maximum 2.5 mg/kg",
+          "regulation": "PerBPOM No. 34/2019 Annex",
+          "type": "chemical",
+          "test_method": "Distillation titration",
+          "notes": "For tea-flavored products"
+        },
+        {
+          "id": "07.1_chem_009",
+          "name": "Benzo(a)pyrene",
+          "standard": "Maximum 0.01 mg/kg",
+          "regulation": "PerBPOM No. 13/2020 Annex III",
+          "type": "chemical",
+          "test_method": "HPLC-FL",
+          "notes": "For smoked/flavored products"
+        },
+        {
+          "id": "07.1_micro_001",
+          "name": "Total Plate Count (TPC)",
+          "standard": "Maximum 10,000 CFU/g",
+          "regulation": "PerBPOM No. 16/2016 Annex I",
+          "type": "microbiological",
+          "test_method": "ISO 4833 pour plate method",
+          "notes": "General hygiene indicator"
+        },
+        {
+          "id": "07.1_micro_002",
+          "name": "Coliform",
+          "standard": "Maximum 10 APM/g (n=5, c=2)",
+          "regulation": "PerBPOM No. 16/2016 Annex I",
+          "type": "microbiological",
+          "test_method": "ISO 4831 MPN technique",
+          "notes": "Fecal contamination indicator"
+        },
+        {
+          "id": "07.1_micro_003",
+          "name": "E. coli",
+          "standard": "Maximum 10 CFU/g (n=5, c=1)",
+          "regulation": "PerBPOM No. 16/2016 Annex I",
+          "type": "microbiological",
+          "test_method": "ISO 16649 chromogenic agar",
+          "notes": "Critical safety indicator"
+        },
+        {
+          "id": "07.1_micro_004",
+          "name": "Staphylococcus aureus",
+          "standard": "Maximum 100 CFU/g (n=5, c=2)",
+          "regulation": "PerBPOM No. 16/2016 Annex I",
+          "type": "microbiological",
+          "test_method": "ISO 6888 Baird Parker agar",
+          "notes": "Food handler contamination"
+        },
+        {
+          "id": "07.1_micro_005",
+          "name": "Salmonella sp.",
+          "standard": "Not detected in 25g (n=5, c=0)",
+          "regulation": "PerBPOM No. 16/2016 Annex I",
+          "type": "microbiological",
+          "test_method": "ISO 6579 pre-enrichment + PCR",
+          "notes": "Zero tolerance pathogen"
+        },
+        {
+          "id": "07.1_micro_006",
+          "name": "Bacillus cereus",
+          "standard": "Maximum 1,000 CFU/g",
+          "regulation": "PerBPOM No. 16/2016 Annex II",
+          "type": "microbiological",
+          "test_method": "ISO 7932 spread plate",
+          "notes": "Spoilage organism"
+        },
+        {
+          "id": "07.1_micro_007",
+          "name": "Yeast and Mold",
+          "standard": "Maximum 100 CFU/g",
+          "regulation": "PerBPOM No. 16/2016 Annex I",
+          "type": "microbiological",
+          "test_method": "ISO 21527 pour plate DG18",
+          "notes": "Fungal contamination"
+        },
+        {
+          "id": "07.1_heavy_001",
+          "name": "Lead (Pb)",
+          "standard": "Maximum 0.2 mg/kg",
+          "regulation": "PerBPOM No. 5/2018 Annex I",
+          "type": "heavy_metal",
+          "test_method": "ICP-OES after microwave digestion",
+          "notes": "Neurotoxic heavy metal"
+        },
+        {
+          "id": "07.1_heavy_002",
+          "name": "Cadmium (Cd)",
+          "standard": "Maximum 0.1 mg/kg",
+          "regulation": "PerBPOM No. 5/2018 Annex I",
+          "type": "heavy_metal",
+          "test_method": "ICP-OES after microwave digestion",
+          "notes": "Renal toxic heavy metal"
+        },
+        {
+          "id": "07.1_heavy_003",
+          "name": "Mercury (Hg)",
+          "standard": "Maximum 0.05 mg/kg",
+          "regulation": "PerBPOM No. 5/2018 Annex I",
+          "type": "heavy_metal",
+          "test_method": "Cold vapor atomic absorption",
+          "notes": "Bioaccumulative toxic metal"
+        },
+        {
+          "id": "07.1_heavy_004",
+          "name": "Arsenic (As)",
+          "standard": "Maximum 0.2 mg/kg",
+          "regulation": "PerBPOM No. 5/2018 Annex I",
+          "type": "heavy_metal",
+          "test_method": "ICP-OES with hydride generation",
+          "notes": "Carcinogenic element"
+        },
+        {
+          "id": "07.1_heavy_005",
+          "name": "Tin (Sn)",
+          "standard": "Maximum 250 mg/kg (canned packaging)",
+          "regulation": "PerBPOM No. 5/2018 Annex II",
+          "type": "heavy_metal",
+          "test_method": "ICP-OES",
+          "notes": "For canned biscuits only"
+        },
+        {
+          "id": "07.1_label_001",
+          "name": "Nutrition Declaration",
+          "standard": "Required (energy, protein, fat, carbohydrate, sodium)",
+          "regulation": "PerBPOM No. 22/2019 Article 5 and Annex I",
+          "type": "labeling",
+          "test_method": "Lab analysis + label review",
+          "notes": "Mandatory for all packaged food"
+        },
+        {
+          "id": "07.1_label_002",
+          "name": "Ingredient List",
+          "standard": "Complete with descending order by weight",
+          "regulation": "PerBPOM No. 22/2019 Article 7",
+          "type": "labeling",
+          "test_method": "Label review",
+          "notes": "All allergens must be declared"
+        },
+        {
+          "id": "07.1_label_003",
+          "name": "Net Content",
+          "standard": "Must be in metric units (g or ml)",
+          "regulation": "PerBPOM No. 22/2019 Article 9",
+          "type": "labeling",
+          "test_method": "Label review",
+          "notes": "Must match actual content"
+        },
+        {
+          "id": "07.1_label_004",
+          "name": "BPOM Distribution License Number",
+          "standard": "ML followed by 11 digits",
+          "regulation": "PerBPOM No. 22/2019 Article 3",
+          "type": "labeling",
+          "test_method": "Label verification against BPOM database",
+          "notes": "Mandatory for domestic products"
+        },
+        {
+          "id": "07.1_label_005",
+          "name": "Allergen Declaration",
+          "standard": "Must declare gluten, milk, eggs, nuts, soybeans in ingredient list",
+          "regulation": "PerBPOM No. 22/2019 Article 8; CAC/GL 74-2011",
+          "type": "labeling",
+          "test_method": "Label review",
+          "notes": "Cross-contact warnings also required"
+        }
+      ]
+    },
+    "14.1": {
+      "category_code": "14.1",
+      "category_name": "Non-Alcoholic Beverages",
+      "parent_code": "14",
+      "description": "Drinks including fruit juices, nectars, ready-to-drink beverages, and powders for reconstitution",
+      "keywords": {
+        "product_names": ["juice", "jus", "nectar", "nektar", "drink", "minuman", "beverage", "sirup", "powder drink", "minuman serbuk", "iced tea", "teh manis", "coffee drink", "energy drink"],
+        "ingredients": ["water", "air", "fruit", "buah", "juice", "jus", "sugar", "gula", "citric acid", "asam sitrat", "vitamin", "mineral", "milk", "susu", "tea", "teh", "coffee", "kopi", "honey", "madu", "preservatives", "pengawet"],
+        "production_methods": ["pasteurized", "pasteurisasi", "UHT", "ultra heat treated", "bottled", "dibotol", "canned", "dikalengkan", "fermented", "difermentasi", "concentrated", "pekat", "reconstituted", "direkonstitusi"],
+        "health_claims": ["no added sugar", "tanpa gula tambahan", "natural", "alami", "fortified", "diperkaya", "vitamin enriched", "kaya vitamin", "low calorie", "rendah kalori", "organic", "organik"]
+      },
+      "parameters": [
+        {
+          "id": "14.1_chem_001",
+          "name": "Brix / Total Soluble Solids",
+          "standard": "Minimum 10°Brix (juice), Minimum 5°Brix (nectar)",
+          "regulation": "SNI 01-3719-1995 Section 3; PerBPOM No. 34/2019",
+          "type": "chemical",
+          "test_method": "Refractometer at 20°C",
+          "notes": "Quality indicator for fruit content"
+        },
+        {
+          "id": "14.1_chem_002",
+          "name": "Titratable Acidity (as citric acid)",
+          "standard": "0.1 - 0.5% (varies by fruit type)",
+          "regulation": "SNI 01-3719-1995 Section 4",
+          "type": "chemical",
+          "test_method": "Titration with 0.1N NaOH to pH 8.1",
+          "notes": "Preservation and taste indicator"
+        },
+        {
+          "id": "14.1_chem_003",
+          "name": "pH Value",
+          "standard": "2.5 - 4.5 (fruit juice); 3.0 - 5.0 (nectar)",
+          "regulation": "PerBPOM No. 16/2016 Annex",
+          "type": "chemical",
+          "test_method": "Potentiometric pH meter",
+          "notes": "Microbiological stability indicator"
+        },
+        {
+          "id": "14.1_chem_004",
+          "name": "Vitamin C (Ascorbic acid)",
+          "standard": "Minimum 80% of declared value (if added)",
+          "regulation": "PerBPOM No. 22/2019 + PerBPOM No. 11/2020",
+          "type": "chemical",
+          "test_method": "Iodometric titration or HPLC",
+          "notes": "For fortified products"
+        },
+        {
+          "id": "14.1_chem_005",
+          "name": "Preservatives (Sorbic acid, Benzoic acid)",
+          "standard": "Sorbic acid: max 300 mg/kg; Benzoic acid: max 200 mg/kg (as acid)",
+          "regulation": "PerBPOM No. 13/2020 Annex I",
+          "type": "chemical",
+          "test_method": "HPLC-UV",
+          "notes": "Cannot be combined in carbonated drinks"
+        },
+        {
+          "id": "14.1_chem_006",
+          "name": "Sweeteners (Acesulfame K, Aspartame)",
+          "standard": "Maximum 300 mg/kg (Acesulfame K), Maximum 600 mg/kg (Aspartame)",
+          "regulation": "PerBPOM No. 13/2020 Annex II",
+          "type": "chemical",
+          "test_method": "HPLC or LC-MS/MS",
+          "notes": "Must declare on label if used"
+        },
+        {
+          "id": "14.1_chem_007",
+          "name": "Artificial Colors (Tartrazine, etc.)",
+          "standard": "Per approved additive list (PerBPOM No. 13/2020 Annex III)",
+          "regulation": "PerBPOM No. 13/2020 Annex III",
+          "type": "chemical",
+          "test_method": "TLC or HPLC",
+          "notes": "Warning statement required for certain colors"
+        },
+        {
+          "id": "14.1_chem_008",
+          "name": "Caffeine Content",
+          "standard": "Maximum 150 mg/L (energy drinks), no restriction for coffee/tea drinks",
+          "regulation": "PerBPOM No. 13/2020; BPOM Regulation on Energy Drinks",
+          "type": "chemical",
+          "test_method": "HPLC-UV",
+          "notes": "Mandatory warning for pregnant women and children"
+        },
+        {
+          "id": "14.1_chem_009",
+          "name": "Taurine",
+          "standard": "Maximum 400 mg/100ml in energy drinks",
+          "regulation": "BPOM Regulation on Energy Drinks",
+          "type": "chemical",
+          "test_method": "HPLC-FL",
+          "notes": "Only permitted in energy drinks"
+        },
+        {
+          "id": "14.1_chem_010",
+          "name": "Carbonation Level",
+          "standard": "3 - 5 vol CO2 for carbonated beverages",
+          "regulation": "SNI 01-4067-2002 (Carbonated drink)",
+          "type": "chemical",
+          "test_method": "Burrette method (pressure release)",
+          "notes": "For carbonated beverages only"
+        },
+        {
+          "id": "14.1_micro_001",
+          "name": "Total Plate Count (TPC)",
+          "standard": "Maximum 100 CFU/ml (pasteurized), Maximum 10,000 CFU/ml (heat treated)",
+          "regulation": "PerBPOM No. 16/2016 Annex I",
+          "type": "microbiological",
+          "test_method": "ISO 4833 pour plate",
+          "notes": "Varies by treatment method"
+        },
+        {
+          "id": "14.1_micro_002",
+          "name": "Coliform",
+          "standard": "Maximum 1 CFU/ml (pasteurized)",
+          "regulation": "PerBPOM No. 16/2016 Annex I",
+          "type": "microbiological",
+          "test_method": "ISO 4831 MPN",
+          "notes": "Zero tolerance for pasteurized juice"
+        },
+        {
+          "id": "14.1_micro_003",
+          "name": "E. coli",
+          "standard": "Must not be detected (MPN method)",
+          "regulation": "PerBPOM No. 16/2016 Annex I",
+          "type": "microbiological",
+          "test_method": "ISO 16649 MPN",
+          "notes": "Critical fecal indicator"
+        },
+        {
+          "id": "14.1_micro_004",
+          "name": "Yeast and Mold",
+          "standard": "Maximum 20 CFU/ml (pasteurized), Maximum 100 CFU/ml (heat treated)",
+          "regulation": "PerBPOM No. 16/2016 Annex I",
+          "type": "microbiological",
+          "test_method": "ISO 21527 pour plate",
+          "notes": "Fungal spoilage indicator"
+        },
+        {
+          "id": "14.1_micro_005",
+          "name": "Salmonella sp.",
+          "standard": "Not detected in 25ml (n=5, c=0)",
+          "regulation": "PerBPOM No. 16/2016 Annex I",
+          "type": "microbiological",
+          "test_method": "ISO 6785 pre-enrichment + PCR",
+          "notes": "Zero tolerance pathogen"
+        },
+        {
+          "id": "14.1_micro_006",
+          "name": "Listeria monocytogenes",
+          "standard": "Not detected in 25ml for chilled products",
+          "regulation": "PerBPOM No. 16/2016 Annex I",
+          "type": "microbiological",
+          "test_method": "ISO 11290 enrichment + PCR",
+          "notes": "For refrigerated products only"
+        },
+        {
+          "id": "14.1_heavy_001",
+          "name": "Lead (Pb)",
+          "standard": "Maximum 0.05 mg/L",
+          "regulation": "PerBPOM No. 5/2018 Annex I",
+          "type": "heavy_metal",
+          "test_method": "ICP-OES after acid digestion",
+          "notes": "Lower limit than solid foods due to volume consumption"
+        },
+        {
+          "id": "14.1_heavy_002",
+          "name": "Cadmium (Cd)",
+          "standard": "Maximum 0.02 mg/L",
+          "regulation": "PerBPOM No. 5/2018 Annex I",
+          "type": "heavy_metal",
+          "test_method": "ICP-OES after acid digestion",
+          "notes": "Stringent limit for beverages"
+        },
+        {
+          "id": "14.1_heavy_003",
+          "name": "Mercury (Hg)",
+          "standard": "Maximum 0.01 mg/L",
+          "regulation": "PerBPOM No. 5/2018 Annex I",
+          "type": "heavy_metal",
+          "test_method": "Cold vapor AAS",
+          "notes": "Strict limit due to high consumption"
+        },
+        {
+          "id": "14.1_heavy_004",
+          "name": "Arsenic (As)",
+          "standard": "Maximum 0.1 mg/L",
+          "regulation": "PerBPOM No. 5/2018 Annex I",
+          "type": "heavy_metal",
+          "test_method": "ICP-OES with hydride generation",
+          "notes": "Includes both organic and inorganic forms"
+        },
+        {
+          "id": "14.1_heavy_005",
+          "name": "Copper (Cu)",
+          "standard": "Maximum 2 mg/L",
+          "regulation": "PerBPOM No. 5/2018 Annex II",
+          "type": "heavy_metal",
+          "test_method": "ICP-OES",
+          "notes": "Contamination from equipment"
+        },
+        {
+          "id": "14.1_heavy_006",
+          "name": "Zinc (Zn)",
+          "standard": "Maximum 5 mg/L",
+          "regulation": "PerBPOM No. 5/2018 Annex II",
+          "type": "heavy_metal",
+          "test_method": "ICP-OES",
+          "notes": "High levels indicate galvanic corrosion"
+        },
+        {
+          "id": "14.1_label_001",
+          "name": "Nutrition Declaration",
+          "standard": "Required: energy, protein, fat, carbohydrate, sugar, sodium, fiber (if claimed)",
+          "regulation": "PerBPOM No. 22/2019 Article 5 and Annex I",
+          "type": "labeling",
+          "test_method": "Lab analysis + label review",
+          "notes": "Per serving calculation required"
+        },
+        {
+          "id": "14.1_label_002",
+          "name": "Fruit/Juice Content Declaration",
+          "standard": "Must state percentage of fruit content (minimum 35% for nectar)",
+          "regulation": "SNI 01-3719-1995 Section 8; PerBPOM No. 34/2019",
+          "type": "labeling",
+          "test_method": "Label review",
+          "notes": "Critical for consumer information"
+        },
+        {
+          "id": "14.1_label_003",
+          "name": "Storage Instructions",
+          "standard": "Must state 'Keep refrigerated' for refrigerated products; 'Store in cool, dry place' for UHT",
+          "regulation": "PerBPOM No. 22/2019 Article 11",
+          "type": "labeling",
+          "test_method": "Label review",
+          "notes": "Linked to shelf life validation"
+        },
+        {
+          "id": "14.1_label_004",
+          "name": "Warning for Colorant (if applicable)",
+          "standard": "May affect activity and attention in children (for tartrazine, sunset yellow, etc.)",
+          "regulation": "PerBPOM No. 13/2020 Annex III; PerBPOM No. 22/2019",
+          "type": "labeling",
+          "test_method": "Label review",
+          "notes": "Mandatory warning for certified colorants"
+        },
+        {
+          "id": "14.1_label_005",
+          "name": "Caffeine Warning (for coffee/tea/energy drinks)",
+          "standard": "Not recommended for children, pregnant women, and caffeine-sensitive individuals",
+          "regulation": "BPOM Regulation on Caffeine in Beverages",
+          "type": "labeling",
+          "test_method": "Label review",
+          "notes": "Mandatory for beverages with >50 mg/L caffeine"
+        },
+        {
+          "id": "14.1_label_006",
+          "name": "BPOM Distribution License Number",
+          "standard": "ML followed by 11 digits",
+          "regulation": "PerBPOM No. 22/2019 Article 3",
+          "type": "labeling",
+          "test_method": "Label verification against BPOM database",
+          "notes": "Mandatory for domestic products"
+        }
+      ]
+    },
+    "01.2": {
+      "category_code": "01.2",
+      "category_name": "Dairy Products (Fermented Milk and Similar)",
+      "parent_code": "01",
+      "description": "Fermented milk products including yogurt, kefir, and similar cultured dairy",
+      "keywords": {
+        "product_names": ["yogurt", "yoghurt", "kefir", "susu fermentasi", "fermented milk", "cultured milk", "skimmed yogurt", "plain yogurt", "flavored yogurt", "drinking yogurt", "probiotic drink", "buttermilk", "acidophilus milk"],
+        "ingredients": ["milk", "susu", "full cream milk", "susu full cream", "skim milk", "susu skim", "milk powder", "susu bubuk", "live cultures", "kultur aktif", "lactobacillus", "bifidobacterium", "streptococcus thermophilus", "sugar", "gula", "fruit", "buah", "flavoring", "perasa", "stabilizer", "pengental"],
+        "production_methods": ["fermented", "difermentasi", "cultured", "dikultur", "pasteurized", "pasteurisasi", "heat treated", "set yogurt", "drinkable yogurt", "frozen yogurt"],
+        "health_claims": ["probiotic", "probiotik", "live cultures", "kultur aktif", "good for digestion", "salut pencernaan", "high calcium", "kalsium tinggi", "low fat", "rendah lemak", "high protein", "protein tinggi", "lactose free", "bebas laktosa", "immune support", "dukung imun"]
+      },
+      "parameters": [
+        {
+          "id": "01.2_chem_001",
+          "name": "Titratable Acidity (as lactic acid)",
+          "standard": "Minimum 0.6% (set yogurt), Minimum 0.7% (drinking yogurt)",
+          "regulation": "SNI 2981:2009 Section 3; PerBPOM No. 34/2019",
+          "type": "chemical",
+          "test_method": "Titration with 0.1N NaOH to pH 8.4",
+          "notes": "Key quality and preservation indicator"
+        },
+        {
+          "id": "01.2_chem_002",
+          "name": "pH Value",
+          "standard": "3.8 - 4.5 (yogurt), 3.5 - 4.5 (kefir)",
+          "regulation": "SNI 2981:2009 Section 4",
+          "type": "chemical",
+          "test_method": "Potentiometric pH meter",
+          "notes": "Lower pH in fermented products"
+        },
+        {
+          "id": "01.2_chem_003",
+          "name": "Fat Content",
+          "standard": "Minimum 2.5% (full fat), Maximum 1% (low fat), Maximum 0.5% (skim)",
+          "regulation": "SNI 2981:2009 Section 3.1; PerBPOM No. 34/2019",
+          "type": "chemical",
+          "test_method": "Gerber method or Mojonnier extraction",
+          "notes": "Must match label declaration"
+        },
+        {
+          "id": "01.2_chem_004",
+          "name": "Protein Content",
+          "standard": "Minimum 2.7% (plain yogurt), Minimum 3.0% (flavored yogurt)",
+          "regulation": "SNI 2981:2009 Section 3.2",
+          "type": "chemical",
+          "test_method": "Kjeldahl method (N x 6.38)",
+          "notes": "Dairy protein has different conversion factor"
+        },
+        {
+          "id": "01.2_chem_005",
+          "name": "Total Solids",
+          "standard": "Minimum 15% (set yogurt), Minimum 10% (drinking yogurt)",
+          "regulation": "SNI 2981:2009 Section 2",
+          "type": "chemical",
+          "test_method": "Gravimetric oven method at 100°C",
+          "notes": "Includes protein, fat, lactose, minerals"
+        },
+        {
+          "id": "01.2_chem_006",
+          "name": "Lactose Content",
+          "standard": "Maximum 5% (regular), labeled for lactose-free variants",
+          "regulation": "PerBPOM No. 22/2019 Article 5",
+          "type": "chemical",
+          "test_method": "HPLC-ELSD or enzymatic",
+          "notes": "Important for lactose-intolerant consumers"
+        },
+        {
+          "id": "01.2_chem_007",
+          "name": "Sucrose (for flavored yogurt)",
+          "standard": "Maximum 15% (flavored), labeled if added",
+          "regulation": "SNI 2981:2009 Section 3.4",
+          "type": "chemical",
+          "test_method": "Lane-Eynon titration",
+          "notes": "Must match nutrition label declaration"
+        },
+        {
+          "id": "01.2_chem_008",
+          "name": "Vitamin D (if fortified)",
+          "standard": "Minimum 80% of declared value",
+          "regulation": "PerBPOM No. 11/2020 (Fortified Foods)",
+          "type": "chemical",
+          "test_method": "HPLC-FL",
+          "notes": "For fortified products only"
+        },
+        {
+          "id": "01.2_chem_009",
+          "name": "Stabilizers (Pectin, CMC, Gelatin)",
+          "standard": "Maximum 0.5% (individual), Maximum 1% (combined)",
+          "regulation": "PerBPOM No. 13/2020 Annex I",
+          "type": "chemical",
+          "test_method": "HPLC or qualitative tests",
+          "notes": "Must be declared in ingredient list"
+        },
+        {
+          "id": "01.2_micro_001",
+          "name": "Lactic Acid Bacteria Count (Live cultures)",
+          "standard": "Minimum 10^7 CFU/g or ml (at expiry date)",
+          "regulation": "SNI 2981:2009 Section 5; PerBPOM No. 16/2016 Annex I",
+          "type": "microbiological",
+          "test_method": "MRS agar pour plate, anaerobincubation 37°C/48h",
+          "notes": "Probiotic claim must be maintained through shelf life"
+        },
+        {
+          "id": "01.2_micro_002",
+          "name": "Total Plate Count (TPC)",
+          "standard": "Maximum 10^5 CFU/g (at expiry)",
+          "regulation": "PerBPOM No. 16/2016 Annex I",
+          "type": "microbiological",
+          "test_method": "ISO 4833 pour plate",
+          "notes": "Indicator of hygiene and shelf life"
+        },
+        {
+          "id": "01.2_micro_003",
+          "name": "Coliform",
+          "standard": "Maximum 10 CFU/g (at expiry)",
+          "regulation": "PerBPOM No. 16/2016 Annex I",
+          "type": "microbiological",
+          "test_method": "ISO 4831 MPN",
+          "notes": "Post-pasteurization contamination indicator"
+        },
+        {
+          "id": "01.2_micro_004",
+          "name": "E. coli",
+          "standard": "Maximum 10 CFU/g (n=5, c=2)",
+          "regulation": "PerBPOM No. 16/2016 Annex I",
+          "type": "microbiological",
+          "test_method": "ISO 16649 chromogenic agar",
+          "notes": "Critical safety indicator"
+        },
+        {
+          "id": "01.2_micro_005",
+          "name": "Staphylococcus aureus",
+          "standard": "Maximum 100 CFU/g (n=5, c=2)",
+          "regulation": "PerBPOM No. 16/2016 Annex I",
+          "type": "microbiological",
+          "test_method": "ISO 6888 Baird Parker",
+          "notes": "Food handler contamination"
+        },
+        {
+          "id": "01.2_micro_006",
+          "name": "Salmonella sp.",
+          "standard": "Not detected in 25g (n=5, c=0)",
+          "regulation": "PerBPOM No. 16/2016 Annex I",
+          "type": "microbiological",
+          "test_method": "ISO 6579 pre-enrichment + PCR",
+          "notes": "Zero tolerance pathogen"
+        },
+        {
+          "id": "01.2_micro_007",
+          "name": "Listeria monocytogenes",
+          "standard": "Not detected in 25g (for chilled products with shelf life > 10 days)",
+          "regulation": "PerBPOM No. 16/2016 Annex I",
+          "type": "microbiological",
+          "test_method": "ISO 11290 enrichment + PCR",
+          "notes": "Critical for refrigerated products"
+        },
+        {
+          "id": "01.2_micro_008",
+          "name": "Yeast and Mold",
+          "standard": "Maximum 100 CFU/g",
+          "regulation": "PerBPOM No. 16/2016 Annex I",
+          "type": "microbiological",
+          "test_method": "ISO 21527 pour plate",
+          "notes": "Spoilage and quality indicator"
+        },
+        {
+          "id": "01.2_micro_009",
+          "name": "Bacillus cereus",
+          "standard": "Maximum 100 CFU/g",
+          "regulation": "PerBPOM No. 16/2016 Annex II",
+          "type": "microbiological",
+          "test_method": "ISO 7932 spread plate",
+          "notes": "For products with shelf life > 10 days"
+        },
+        {
+          "id": "01.2_heavy_001",
+          "name": "Lead (Pb)",
+          "standard": "Maximum 0.02 mg/kg",
+          "regulation": "PerBPOM No. 5/2018 Annex I",
+          "type": "heavy_metal",
+          "test_method": "ICP-OES after microwave digestion",
+          "notes": "Stringent limit due to dairy matrix"
+        },
+        {
+          "id": "01.2_heavy_002",
+          "name": "Cadmium (Cd)",
+          "standard": "Maximum 0.02 mg/kg",
+          "regulation": "PerBPOM No. 5/2018 Annex I",
+          "type": "heavy_metal",
+          "test_method": "ICP-OES after microwave digestion",
+          "notes": "Bioaccumulation concern"
+        },
+        {
+          "id": "01.2_heavy_003",
+          "name": "Mercury (Hg)",
+          "standard": "Maximum 0.01 mg/kg",
+          "regulation": "PerBPOM No. 5/2018 Annex I",
+          "type": "heavy_metal",
+          "test_method": "Cold vapor AAS",
+          "notes": "Very strict limit for dairy"
+        },
+        {
+          "id": "01.2_heavy_004",
+          "name": "Arsenic (As)",
+          "standard": "Maximum 0.1 mg/kg",
+          "regulation": "PerBPOM No. 5/2018 Annex I",
+          "type": "heavy_metal",
+          "test_method": "ICP-OES with hydride generation",
+          "notes": "Milk may contain organic arsenic"
+        },
+        {
+          "id": "01.2_label_001",
+          "name": "Nutrition Declaration",
+          "standard": "Required: energy, protein, fat, carbohydrate, sugar, sodium, calcium",
+          "regulation": "PerBPOM No. 22/2019 Article 5 and Annex I",
+          "type": "labeling",
+          "test_method": "Lab analysis + label review",
+          "notes": "Calcium declaration encouraged"
+        },
+        {
+          "id": "01.2_label_002",
+          "name": "Probiotic/Live Culture Claim",
+          "standard": "Must specify genus and species, minimum 10^8 CFU/serving",
+          "regulation": "PerBPOM No. 16/2016; BPOM Guidelines on Probiotic Claims",
+          "type": "labeling",
+          "test_method": "Label review + strain verification",
+          "notes": "Must be supported by scientific evidence"
+        },
+        {
+          "id": "01.2_label_003",
+          "name": "Storage Temperature",
+          "standard": "Must state 'Keep refrigerated at 4-8°C' for dairy products",
+          "regulation": "PerBPOM No. 22/2019 Article 11",
+          "type": "labeling",
+          "test_method": "Label review",
+          "notes": "Critical for shelf life and safety"
+        },
+        {
+          "id": "01.2_label_004",
+          "name": "Shelf Life and Expiry Date",
+          "standard": "Must show 'Best before' or 'Exp date' with day/month/year",
+          "regulation": "PerBPOM No. 22/2019 Article 10",
+          "type": "labeling",
+          "test_method": "Label review",
+          "notes": "Must match stability study data"
+        },
+        {
+          "id": "01.2_label_005",
+          "name": "Allergen Declaration",
+          "standard": "Must declare 'Contains milk' prominently; other allergens if applicable",
+          "regulation": "PerBPOM No. 22/2019 Article 8; CAC/GL 74-2011",
+          "type": "labeling",
+          "test_method": "Label review",
+          "notes": "Milk allergy is common, especially in children"
+        },
+        {
+          "id": "01.2_label_006",
+          "name": "BPOM Distribution License Number",
+          "standard": "ML followed by 11 digits",
+          "regulation": "PerBPOM No. 22/2019 Article 3",
+          "type": "labeling",
+          "test_method": "Label verification against BPOM database",
+          "notes": "Mandatory for domestic products"
+        }
+      ]
+    },
+    "supplement": {
+      "category_code": "supplement",
+      "category_name": "Dietary Supplements / Health Supplements",
+      "parent_code": "supp",
+      "description": "Products intended to supplement diet including vitamins, minerals, herbal extracts, amino acids, and combination supplements in various dosage forms",
+      "keywords": {
+        "product_names": ["supplement", "suplemen", "vitamin", "mineral", "health supplement", "dietary supplement", "herbal supplement", "nutraceutical", "nutraceutical", "protein powder", "whey protein", "collagen", "probiotik", "omega", "fish oil", "minyak ikan", "chlorophyll", "spirulina", "green food", "makanan sehat"],
+        "ingredients": ["vitamin", "mineral", "protein", "amino", "herb", "herbal", "ekstrak", "botanical", "plant extract", "probiotic", "enzyme", "lactic acid bacteria", "omega 3", "EPA", "DHA", "calcium", "iron", "zinc", "magnesium", "vitamin C", "vitamin D", "vitamin E", "B complex", "folic acid", "ginkgo", "echinacea", "spirulina", "chlorella", "maca", "temulawak", "kunyit", "jahe", "ginger"],
+        "production_methods": ["tablet", "kapsul", "capsule", "softgel", "powder", "serbuk", "granule", "liquid", "cair", "syrup", "sirup", "effervescent", "chewable", "time release", "controlled release", "coated", "dilapisi"],
+        "health_claims": ["immune support", "dukung imun", "energy booster", "peningkat energi", "bone health", "kesehatan tulang", "joint health", "kesehatan sendi", "antioxidant", "antioksidan", "heart health", "kesehatan jantung", "brain health", "kesehatan otak", "digestive health", "pencernaan", "skin health", "kesehatan kulit", "eye health", "kesehatan mata", "weight management", "pengelolaan berat badan", "muscle recovery", "pemulihan otot"]
+      },
+      "parameters": [
+        {
+          "id": "supp_chem_001",
+          "name": "Active Ingredient Potency",
+          "standard": "90-110% of label claim (individual ingredients); 80-120% (combination products)",
+          "regulation": "PerBPOM No. 11/2020 Article 8; PerBPOM No. 16/2016 Annex III",
+          "type": "chemical",
+          "test_method": "HPLC-UV/FL, titrimetric, or enzymatic methods per ingredient",
+          "notes": "Critical for efficacy and safety"
+        },
+        {
+          "id": "supp_chem_002",
+          "name": "Disintegration Time (Tablets/Capsules)",
+          "standard": "Maximum 30 minutes (tablet), Maximum 15 minutes (effervescent)",
+          "regulation": "PerBPOM No. 11/2020 Article 9; FI Edition VI",
+          "type": "chemical",
+          "test_method": "USP <7040> Disintegration apparatus",
+          "notes": "Bioavailability prerequisite"
+        },
+        {
+          "id": "supp_chem_003",
+          "name": "Dissolution Rate (Tablets)",
+          "standard": "Minimum 75% dissolved within 45 minutes (if applicable)",
+          "regulation": "PerBPOM No. 11/2020; FI Edition VI",
+          "type": "chemical",
+          "test_method": "USP <711> Dissolution apparatus",
+          "notes": "For products with bioavailability concerns"
+        },
+        {
+          "id": "supp_chem_004",
+          "name": "Moisture Content",
+          "standard": "Maximum 5% (tablet), Maximum 3% (capsule powder)",
+          "regulation": "PerBPOM No. 11/2020; FI Edition VI",
+          "type": "chemical",
+          "test_method": "Karl Fischer titration or loss on drying",
+          "notes": "Critical for shelf life stability"
+        },
+        {
+          "id": "supp_chem_005",
+          "name": "Vitamin C (Ascorbic Acid)",
+          "standard": "90-110% of label claim",
+          "regulation": "PerBPOM No. 11/2020 Article 8",
+          "type": "chemical",
+          "test_method": "Iodometric titration or HPLC-FL",
+          "notes": "Degrades easily, stability testing required"
+        },
+        {
+          "id": "supp_chem_006",
+          "name": "Vitamin D3 (Cholecalciferol)",
+          "standard": "90-120% of label claim",
+          "regulation": "PerBPOM No. 11/2020 Article 8",
+          "type": "chemical",
+          "test_method": "HPLC-UV after saponification",
+          "notes": "Light sensitive, requires dark containers"
+        },
+        {
+          "id": "supp_chem_007",
+          "name": "Calcium (as Ca)",
+          "standard": "90-110% of label claim",
+          "regulation": "PerBPOM No. 11/2020 Article 8",
+          "type": "chemical",
+          "test_method": "Complexometric EDTA titration or ICP-OES",
+          "notes": "Various salts have different bioavailability"
+        },
+        {
+          "id": "supp_chem_008",
+          "name": "Iron (as Fe)",
+          "standard": "90-110% of label claim",
+          "regulation": "PerBPOM No. 11/2020 Article 8",
+          "type": "chemical",
+          "test_method": "Atomic absorption spectroscopy (AAS)",
+          "notes": "Various forms: ferrous sulfate, ferrous fumarate, iron bis-glycinate"
+        },
+        {
+          "id": "supp_chem_009",
+          "name": "Omega-3 (EPA + DHA)",
+          "standard": "90-110% of label claim for EPA+DHA combined",
+          "regulation": "PerBPOM No. 11/2020; PerBPOM No. 13/2020",
+          "type": "chemical",
+          "test_method": "GC-FID after methylation (fatty acid profile)",
+          "notes": "Must specify EPA and DHA individually if claimed"
+        },
+        {
+          "id": "supp_chem_010",
+          "name": "Protein Content (for protein powders)",
+          "standard": "Minimum 70% of label claim (whey/plant protein)",
+          "regulation": "PerBPOM No. 11/2020 Article 8",
+          "type": "chemical",
+          "test_method": "Kjeldahl (N x 6.25) or Dumas method",
+          "notes": "Must account for added amino acids"
+        },
+        {
+          "id": "supp_chem_011",
+          "name": "Amino Acid Profile (for protein supplements)",
+          "standard": "Individual amino acids: 90-110% of declared value",
+          "regulation": "PerBPOM No. 11/2020; PerBPOM No. 16/2016 Annex III",
+          "type": "chemical",
+          "test_method": "Amino acid analyzer (ion exchange chromatography)",
+          "notes": "Required for claims on specific amino acids"
+        },
+        {
+          "id": "supp_chem_012",
+          "name": "Herbal/Botanical Marker Compounds",
+          "standard": "Must contain minimum specified amount of marker compound",
+          "regulation": "PerBPOM No. 11/2020 Article 8; BPOM Guidelines on Herbal Products",
+          "type": "chemical",
+          "test_method": "HPLC-UV/FL specific to plant species",
+          "notes": "Each herb requires specific marker compound identification"
+        },
+        {
+          "id": "supp_chem_013",
+          "name": "Preservatives (if used)",
+          "standard": "Within limits specified in PerBPOM No. 13/2020 Annex I",
+          "regulation": "PerBPOM No. 13/2020 Annex I",
+          "type": "chemical",
+          "test_method": "HPLC-UV",
+          "notes": "Sorbic acid, benzoic acid limited in supplements"
+        },
+        {
+          "id": "supp_chem_014",
+          "name": "Sweeteners (if used)",
+          "standard": "Within approved limits per PerBPOM No. 13/2020 Annex II",
+          "regulation": "PerBPOM No. 13/2020 Annex II",
+          "type": "chemical",
+          "test_method": "HPLC or enzymatic",
+          "notes": "Must declare 'contains sweetener' on label"
+        },
+        {
+          "id": "supp_micro_001",
+          "name": "Total Plate Count (TPC)",
+          "standard": "Maximum 10^4 CFU/g or CFU/ml (non-viable products)",
+          "regulation": "PerBPOM No. 16/2016 Annex III",
+          "type": "microbiological",
+          "test_method": "ISO 4833 pour plate",
+          "notes": "More stringent than conventional foods"
+        },
+        {
+          "id": "supp_micro_002",
+          "name": "Yeast and Mold",
+          "standard": "Maximum 10^2 CFU/g or CFU/ml",
+          "regulation": "PerBPOM No. 16/2016 Annex III",
+          "type": "microbiological",
+          "test_method": "ISO 21527 pour plate",
+          "notes": "Critical for plant-based supplements"
+        },
+        {
+          "id": "supp_micro_003",
+          "name": "Coliform",
+          "standard": "Maximum 10^2 CFU/g (n=5, c=2)",
+          "regulation": "PerBPOM No. 16/2016 Annex III",
+          "type": "microbiological",
+          "test_method": "ISO 4831 MPN",
+          "notes": "Hygiene indicator during manufacturing"
+        },
+        {
+          "id": "supp_micro_004",
+          "name": "E. coli",
+          "standard": "Must not be detected in 1g (n=5, c=0)",
+          "regulation": "PerBPOM No. 16/2016 Annex III",
+          "type": "microbiological",
+          "test_method": "ISO 16649 MPN",
+          "notes": "Zero tolerance for hygiene pathogens"
+        },
+        {
+          "id": "supp_micro_005",
+          "name": "Staphylococcus aureus",
+          "standard": "Maximum 10^2 CFU/g (n=5, c=2)",
+          "regulation": "PerBPOM No. 16/2016 Annex III",
+          "type": "microbiological",
+          "test_method": "ISO 6888 Baird Parker",
+          "notes": "Manufacturing contamination indicator"
+        },
+        {
+          "id": "supp_micro_006",
+          "name": "Salmonella sp.",
+          "standard": "Not detected in 25g (n=5, c=0)",
+          "regulation": "PerBPOM No. 16/2016 Annex III",
+          "type": "microbiological",
+          "test_method": "ISO 6579 pre-enrichment + PCR",
+          "notes": "Zero tolerance - critical pathogen"
+        },
+        {
+          "id": "supp_micro_007",
+          "name": "Bacillus cereus",
+          "standard": "Maximum 10^3 CFU/g",
+          "regulation": "PerBPOM No. 16/2016 Annex III",
+          "type": "microbiological",
+          "test_method": "ISO 7932 spread plate",
+          "notes": "For plant-based ingredients"
+        },
+        {
+          "id": "supp_micro_008",
+          "name": "Clostridia (for ingredients of animal origin)",
+          "standard": "Maximum 10^2 CFU/g (spores count)",
+          "regulation": "PerBPOM No. 16/2016 Annex III",
+          "type": "microbiological",
+          "test_method": "ISO 14189 enumerations",
+          "notes": "For gelatin, collagen, and animal-derived ingredients"
+        },
+        {
+          "id": "supp_micro_009",
+          "name": "Probiotic Count (if claim probiotic)",
+          "standard": "Minimum 10^8 CFU/serving at expiry date",
+          "regulation": "BPOM Guidelines on Probiotic Supplements",
+          "type": "microbiological",
+          "test_method": "Selective media pour plate (MRS, BCP, etc.)",
+          "notes": "Must maintain viability through shelf life; strain identification required"
+        },
+        {
+          "id": "supp_heavy_001",
+          "name": "Lead (Pb)",
+          "standard": "Maximum 0.5 mg/kg (herbal), Maximum 0.3 mg/kg (synthetic vitamins)",
+          "regulation": "PerBPOM No. 5/2018 Annex I",
+          "type": "heavy_metal",
+          "test_method": "ICP-OES after microwave digestion",
+          "notes": "Higher limit for herbs due to environmental uptake"
+        },
+        {
+          "id": "supp_heavy_002",
+          "name": "Cadmium (Cd)",
+          "standard": "Maximum 0.3 mg/kg (herbal), Maximum 0.1 mg/kg (synthetic)",
+          "regulation": "PerBPOM No. 5/2018 Annex I",
+          "type": "heavy_metal",
+          "test_method": "ICP-OES after microwave digestion",
+          "notes": "Stringent limits for supplements due to daily consumption"
+        },
+        {
+          "id": "supp_heavy_003",
+          "name": "Mercury (Hg)",
+          "standard": "Maximum 0.03 mg/kg (herbal), Maximum 0.1 mg/kg (fish oil)",
+          "regulation": "PerBPOM No. 5/2018 Annex I",
+          "type": "heavy_metal",
+          "test_method": "Cold vapor AAS",
+          "notes": "Fish oil requires mercury analysis; marine contamination concern"
+        },
+        {
+          "id": "supp_heavy_004",
+          "name": "Arsenic (As)",
+          "standard": "Maximum 1 mg/kg (herbal), Maximum 0.5 mg/kg (other supplements)",
+          "regulation": "PerBPOM No. 5/2018 Annex I",
+          "type": "heavy_metal",
+          "test_method": "ICP-OES with hydride generation",
+          "notes": "Herbs grown in contaminated soil can accumulate arsenic"
+        },
+        {
+          "id": "supp_heavy_005",
+          "name": "Copper (Cu)",
+          "standard": "Maximum 20 mg/kg",
+          "regulation": "PerBPOM No. 5/2018 Annex II",
+          "type": "heavy_metal",
+          "test_method": "ICP-OES",
+          "notes": "Contamination from equipment or raw materials"
+        },
+        {
+          "id": "supp_heavy_006",
+          "name": "Zinc (Zn)",
+          "standard": "Maximum 50 mg/kg",
+          "regulation": "PerBPOM No. 5/2018 Annex II",
+          "type": "heavy_metal",
+          "test_method": "ICP-OES",
+          "notes": "High doses of zinc can cause copper deficiency"
+        },
+        {
+          "id": "supp_contam_001",
+          "name": "Aflatoxin B1 (for herbal/plant supplements)",
+          "standard": "Maximum 5 µg/kg (B1), Maximum 10 µg/kg (total B1+B2+G1+G2)",
+          "regulation": "PerBPOM No. 5/2018 Annex III; BPOM Guidelines on Mycotoxins",
+          "type": "contaminant",
+          "test_method": "HPLC-FL after immunoaffinity cleanup",
+          "notes": "Critical for herbal products from tropical regions"
+        },
+        {
+          "id": "supp_contam_002",
+          "name": "Aflatoxin M1 (for dairy-derived supplements)",
+          "standard": "Maximum 0.5 µg/kg",
+          "regulation": "PerBPOM No. 5/2018 Annex III",
+          "type": "contaminant",
+          "test_method": "HPLC-FL after immunoaffinity",
+          "notes": "For collagen, casein, whey-based products"
+        },
+        {
+          "id": "supp_contam_003",
+          "name": "Histamine (for fish oil supplements)",
+          "standard": "Maximum 200 mg/kg",
+          "regulation": "PerBPOM No. 5/2018; EU Regulation 2073/2005",
+          "type": "contaminant",
+          "test_method": "ELISA or HPLC-FL",
+          "notes": "From decomposition of histidine in fish"
+        },
+        {
+          "id": "supp_contam_004",
+          "name": "Peroxide Value (for oils/fats in softgels)",
+          "standard": "Maximum 5 meq/kg (fresh), Maximum 10 meq/kg (at expiry)",
+          "regulation": "PerBPOM No. 5/2018; Codex Alimentarius",
+          "type": "contaminant",
+          "test_method": "Iodometric titration",
+          "notes": "Rancidity indicator for omega-3 products"
+        },
+        {
+          "id": "supp_label_001",
+          "name": "Supplement Facts Panel",
+          "standard": "Must follow PerBPOM No. 22/2019 + PerBPOM No. 11/2020 format for supplements",
+          "regulation": "PerBPOM No. 22/2019 Article 5; PerBPOM No. 11/2020 Article 12",
+          "type": "labeling",
+          "test_method": "Label review",
+          "notes": "Different format from regular nutrition labeling"
+        },
+        {
+          "id": "supp_label_002",
+          "name": "Recommended Use/Dosage",
+          "standard": "Must state daily dose clearly, not to exceed recommended dose",
+          "regulation": "PerBPOM No. 11/2020 Article 12",
+          "type": "labeling",
+          "test_method": "Label review",
+          "notes": "Dosage must be supported by safety data"
+        },
+        {
+          "id": "supp_label_003",
+          "name": "Health Claims Authorization",
+          "standard": "Claims must be approved category or require scientific evidence submission",
+          "regulation": "PerBPOM No. 11/2020 Article 15; BPOM Guidelines on Health Claims",
+          "type": "labeling",
+          "test_method": "Label review + claims verification",
+          "notes": "Prohibited claims cannot be used; approved claims have specific wording"
+        },
+        {
+          "id": "supp_label_004",
+          "name": "Contraindications and Warnings",
+          "standard": "Must state if not for pregnant women, children, specific disease conditions",
+          "regulation": "PerBPOM No. 11/2020 Article 13",
+          "type": "labeling",
+          "test_method": "Label review",
+          "notes": "Specific to active ingredients and target population"
+        },
+        {
+          "id": "supp_label_005",
+          "name": "Drug Interaction Warnings",
+          "standard": "Required for supplements with known drug interactions (e.g., St. John's Wort, Ginkgo)",
+          "regulation": "PerBPOM No. 11/2020 Article 13",
+          "type": "labeling",
+          "test_method": "Label review + literature verification",
+          "notes": "Must be updated as new interactions are discovered"
+        },
+        {
+          "id": "supp_label_006",
+          "name": "Storage Conditions",
+          "standard": "Must state 'Store in cool, dry place' or specific temperature requirement",
+          "regulation": "PerBPOM No. 11/2020 Article 14",
+          "type": "labeling",
+          "test_method": "Label review",
+          "notes": "Probiotics and some vitamins require refrigeration"
+        },
+        {
+          "id": "supp_label_007",
+          "name": "Manufacturing/Import License (NIE)",
+          "standard": "Product registration number: DOS followed by 13 digits",
+          "regulation": "PerBPOM No. 11/2020 Article 3",
+          "type": "labeling",
+          "test_method": "BPOM database verification",
+          "notes": "Different from ML number; supplements require NIE (Nomor Induk Erspo)"
+        },
+        {
+          "id": "supp_label_008",
+          "name": "Allergen Declaration",
+          "standard": "Must declare milk, egg, fish, shellfish, tree nuts, peanuts, wheat, soybeans, gluten",
+          "regulation": "PerBPOM No. 22/2019 Article 8; CAC/GL 74-2011",
+          "type": "labeling",
+          "test_method": "Label review",
+          "notes": "Mandatory for all allergens present in ingredients"
+        },
+        {
+          "id": "supp_label_009",
+          "name": "Claim Substantiation Evidence",
+          "standard": "Must have scientific studies cited if using 'clinically proven' or similar claims",
+          "regulation": "BPOM Guidelines on Health Claims 2018",
+          "type": "labeling",
+          "test_method": "Document verification",
+          "notes": "Claims category determines evidence requirement level"
+        }
+      ]
+    },
+    "08.3": {
+      "category_code": "08.3",
+      "category_name": "Processed Meat Products (Cured/Smoked/Dried)",
+      "parent_code": "08",
+      "description": "Meat products that have been cured, smoked, dried, or otherwise processed including sausages, ham, bacon, dried beef, and similar products",
+      "keywords": {
+        "product_names": ["sausage", "sosis", "ham", "bacon", "daging asap", "smoked meat", "dried beef", "daging kering", "corned beef", "salami", "pepperoni", "mortadella", "meatball", "bakso", "nugget", "burger patty", "patty burger", "meat floss", "abon", "rendang", "dendeng"],
+        "ingredients": ["meat", "daging", "pork", "babi", "beef", "sapi", "chicken", "ayam", "lamb", "kambing", "fish", "ikan", "salt", "garam", "nitrite", "nitrat", "sugar", "gula", "lactose", "preservatives", "pengawet", "smoke", "asap", "spices", "rempah", "starch", "pati", "soy protein", "protein kedelai", "binders", "filler"],
+        "production_methods": ["smoked", "diasap", "cured", "diawetkan", "dried", "dikeringkan", "fermented", "difermentasi", "cooked", "dimasak", "grilled", "dipanggang", "fried", "digoreng", "roasted", "dipanggang", "canned", "dikalengkan", "frozen", "dibekukan"],
+        "health_claims": ["low sodium", "natrium rendah", "reduced fat", "lemak dikurangi", "no preservatives", "tanpa pengawet", "smoke cured", "asap alami", "premium meat", "daging premium", "no added nitrite", "tanpa nitrit tambahan", "gluten free", "bebas gluten", "no msg", "tanpa MSG"]
+      },
+      "parameters": [
+        {
+          "id": "08.3_chem_001",
+          "name": "Water Content (for dried products)",
+          "standard": "Maximum 25% (dried beef), Maximum 30% (jerky)",
+          "regulation": "SNI 01-4620-1998 Section 3; PerBPOM No. 34/2019",
+          "type": "chemical",
+          "test_method": "Gravimetric oven at 105°C",
+          "notes": "Critical for shelf life and quality"
+        },
+        {
+          "id": "08.3_chem_002",
+          "name": "Protein Content",
+          "standard": "Minimum 12% (sausage), Minimum 18% (dried beef)",
+          "regulation": "SNI 01-4620-1998 Section 4; PerBPOM No. 34/2019",
+          "type": "chemical",
+          "test_method": "Kjeldahl method (N x 6.25)",
+          "notes": "Must meet minimum protein to distinguish from extenders"
+        },
+        {
+          "id": "08.3_chem_003",
+          "name": "Fat Content",
+          "standard": "Maximum 30% (sausage), Maximum 25% (ham)",
+          "regulation": "SNI 01-4620-1998 Section 3.2; PerBPOM No. 34/2019",
+          "type": "chemical",
+          "test_method": "Soxhlet extraction or Babcock method",
+          "notes": "Labeled claims must match actual content"
+        },
+        {
+          "id": "08.3_chem_004",
+          "name": "Salt (NaCl) Content",
+          "standard": "Maximum 4% (sausage), Maximum 6% (dried/cured products)",
+          "regulation": "SNI 01-4620-1998 Section 5; BPOM Guidelines on Sodium Reduction",
+          "type": "chemical",
+          "test_method": "Argentometric titration (Mohr method)",
+          "notes": "High salt for preservation; 'low sodium' claim has specific limits"
+        },
+        {
+          "id": "08.3_chem_005",
+          "name": "Nitrite (NO2-) Content",
+          "standard": "Maximum 125 mg/kg as residual nitrite",
+          "regulation": "PerBPOM No. 11/2019 (Food Additives); CODEX STAN 306-2011",
+          "type": "chemical",
+          "test_method": "Colorimetric Griess test or ion chromatography",
+          "notes": "Must specify if 'no added nitrite/nitrate' claim is made"
+        },
+        {
+          "id": "08.3_chem_006",
+          "name": "Nitrate (NO3-) Content",
+          "standard": "Maximum 250 mg/kg (converted from vegetables)",
+          "regulation": "PerBPOM No. 11/2019; CODEX STAN 306-2011",
+          "type": "chemical",
+          "test_method": "Ion chromatography with UV detection",
+          "notes": "Can convert to nitrite during processing"
+        },
+        {
+          "id": "08.3_chem_007",
+          "name": "Starch Content",
+          "standard": "Maximum 2% (if used as binder), Maximum 5% (total extenders)",
+          "regulation": "PerBPOM No. 11/2019; PerBPOM No. 34/2019",
+          "type": "chemical",
+          "test_method": "Polarimetric or enzymatic",
+          "notes": "Must be declared in ingredients if >1%"
+        },
+        {
+          "id": "08.3_chem_008",
+          "name": "TVB-N (Total Volatile Basic Nitrogen)",
+          "standard": "Maximum 40 mg/100g for fresh sausage, Maximum 50 mg/100g for dried products",
+          "regulation": "SNI 01-4620-1998 Section 6; PerBPOM No. 16/2016",
+          "type": "chemical",
+          "test_method": "Steam distillation with Conway dish or Kjeldahl apparatus",
+          "notes": "Freshness and spoilage indicator"
+        },
+        {
+          "id": "08.3_chem_009",
+          "name": "TBA (Thiobarbituric Acid) Value",
+          "standard": "Maximum 1 mg malonaldehyde/kg",
+          "regulation": "SNI 01-4620-1998 Section 6; PerBPOM No. 5/2018",
+          "type": "chemical",
+          "test_method": "Spectrophotometric at 532nm after extraction",
+          "notes": "Rancidity indicator for fat-containing products"
+        },
+        {
+          "id": "08.3_chem_010",
+          "name": "pH Value",
+          "standard": "5.8 - 6.5 (fresh sausage), 5.5 - 6.0 (fermented sausage), 5.4 - 5.8 (dried products)",
+          "regulation": "SNI 01-4620-1998 Section 4",
+          "type": "chemical",
+          "test_method": "Potentiometric pH meter (meat homogenate)",
+          "notes": "Varies by product type and fermentation"
+        },
+        {
+          "id": "08.3_chem_011",
+          "name": "Wood Smoke Compounds (for smoked products)",
+          "standard": "Phenols: 10-50 µg/g; Carbonyls: 5-20 µg/g",
+          "regulation": "PerBPOM No. 13/2020; SNI 01-4620-1998 Annex",
+          "type": "chemical",
+          "test_method": "GC-MS after solvent extraction",
+          "notes": "Authenticity marker for traditional smoke curing"
+        },
+        {
+          "id": "08.3_chem_012",
+          "name": "Polycyclic Aromatic Hydrocarbons (PAH) - Benzo(a)pyrene",
+          "standard": "Maximum 0.01 mg/kg (smoked meat), Maximum 0.005 mg/kg (for infants)",
+          "regulation": "PerBPOM No. 13/2020 Annex III; EU 1881/2006",
+          "type": "chemical",
+          "test_method": "GC-MS after immunoaffinity cleanup",
+          "notes": "From smoke; liquid smoke flavoring must be analyzed separately"
+        },
+        {
+          "id": "08.3_chem_013",
+          "name": "Sodium Nitrite/Sodium Nitrate (for color fixing)",
+          "standard": "Maximum 150 mg/kg (as sodium nitrite); Maximum 300 mg/kg (as sodium nitrate)",
+          "regulation": "PerBPOM No. 11/2019 Annex I",
+          "type": "chemical",
+          "test_method": "Ion chromatography",
+          "notes": "Required to achieve characteristic cured color"
+        },
+        {
+          "id": "08.3_chem_014",
+          "name": "MonoSodium Glutamate (MSG)",
+          "standard": "Maximum 10 g/kg (if used)",
+          "regulation": "PerBPOM No. 13/2020 Annex I",
+          "type": "chemical",
+          "test_method": "Enzymatic or HPLC",
+          "notes": "Must be declared in ingredient list"
+        },
+        {
+          "id": "08.3_micro_001",
+          "name": "Total Plate Count (TPC)",
+          "standard": "Maximum 10^5 CFU/g (cooked sausage), Maximum 10^6 CFU/g (dried/cured)",
+          "regulation": "PerBPOM No. 16/2016 Annex I",
+          "type": "microbiological",
+          "test_method": "ISO 4833 pour plate",
+          "notes": "Varies by processing and shelf life"
+        },
+        {
+          "id": "08.3_micro_002",
+          "name": "Coliform",
+          "standard": "Maximum 10^3 CFU/g (n=5, c=2)",
+          "regulation": "PerBPOM No. 16/2016 Annex I",
+          "type": "microbiological",
+          "test_method": "ISO 4831 MPN",
+          "notes": "Hygiene indicator during processing"
+        },
+        {
+          "id": "08.3_micro_003",
+          "name": "E. coli",
+          "standard": "Maximum 10^2 CFU/g (n=5, c=2)",
+          "regulation": "PerBPOM No. 16/2016 Annex I",
+          "type": "microbiological",
+          "test_method": "ISO 16649 chromogenic agar",
+          "notes": "Fecal contamination indicator"
+        },
+        {
+          "id": "08.3_micro_004",
+          "name": "Staphylococcus aureus",
+          "standard": "Maximum 10^3 CFU/g (n=5, c=2)",
+          "regulation": "PerBPOM No. 16/2016 Annex I",
+          "type": "microbiological",
+          "test_method": "ISO 6888 Baird Parker",
+          "notes": "Enterotoxin test required if >10^3 CFU/g"
+        },
+        {
+          "id": "08.3_micro_005",
+          "name": "Salmonella sp.",
+          "standard": "Not detected in 25g (n=5, c=0)",
+          "regulation": "PerBPOM No. 16/2016 Annex I",
+          "type": "microbiological",
+          "test_method": "ISO 6579 pre-enrichment + PCR",
+          "notes": "Zero tolerance pathogen; critical for raw meat products"
+        },
+        {
+          "id": "08.3_micro_006",
+          "name": "Listeria monocytogenes",
+          "standard": "Not detected in 25g for ready-to-eat products (n=5, c=0)",
+          "regulation": "PerBPOM No. 16/2016 Annex I",
+          "type": "microbiological",
+          "test_method": "ISO 11290 enrichment + PCR",
+          "notes": "Critical for ready-to-eat smoked/cured products"
+        },
+        {
+          "id": "08.3_micro_007",
+          "name": "Clostridium perfringens",
+          "standard": "Maximum 10^3 CFU/g (n=5, c=2)",
+          "regulation": "PerBPOM No. 16/2016 Annex I",
+          "type": "microbiological",
+          "test_method": "ISO 7937 spread plate",
+          "notes": "Spoilage organism; indicator for cooked products"
+        },
+        {
+          "id": "08.3_micro_008",
+          "name": "Enterobacteriaceae",
+          "standard": "Maximum 10^3 CFU/g (cooked products), Maximum 10^4 CFU/g (dried products)",
+          "regulation": "PerBPOM No. 16/2016 Annex I",
+          "type": "microbiological",
+          "test_method": "ISO 21528-2 MPN",
+          "notes": "Hygiene indicator for processed meat"
+        },
+        {
+          "id": "08.3_micro_009",
+          "name": "Yeast and Mold",
+          "standard": "Maximum 10^2 CFU/g",
+          "regulation": "PerBPOM No. 16/2016 Annex I",
+          "type": "microbiological",
+          "test_method": "ISO 21527 pour plate",
+          "notes": "For dried and fermented products"
+        },
+        {
+          "id": "08.3_heavy_001",
+          "name": "Lead (Pb)",
+          "standard": "Maximum 0.1 mg/kg (fresh), Maximum 0.2 mg/kg (processed)",
+          "regulation": "PerBPOM No. 5/2018 Annex I",
+          "type": "heavy_metal",
+          "test_method": "ICP-OES after microwave digestion",
+          "notes": "Higher limit for processed due to concentration during drying"
+        },
+        {
+          "id": "08.3_heavy_002",
+          "name": "Cadmium (Cd)",
+          "standard": "Maximum 0.05 mg/kg (beef), Maximum 0.1 mg/kg (pork/chicken)",
+          "regulation": "PerBPOM No. 5/2018 Annex I",
+          "type": "heavy_metal",
+          "test_method": "ICP-OES after microwave digestion",
+          "notes": "Bioaccumulation in kidney and liver by-products"
+        },
+        {
+          "id": "08.3_heavy_003",
+          "name": "Mercury (Hg)",
+          "standard": "Maximum 0.05 mg/kg (fish sausages only)",
+          "regulation": "PerBPOM No. 5/2018 Annex I",
+          "type": "heavy_metal",
+          "test_method": "Cold vapor AAS",
+          "notes": "Only for fish-based meat products"
+        },
+        {
+          "id": "08.3_heavy_004",
+          "name": "Arsenic (As)",
+          "standard": "Maximum 0.1 mg/kg",
+          "regulation": "PerBPOM No. 5/2018 Annex I",
+          "type": "heavy_metal",
+          "test_method": "ICP-OES with hydride generation",
+          "notes": "Contamination from feed or processing environment"
+        },
+        {
+          "id": "08.3_heavy_005",
+          "name": "Chromium (Cr)",
+          "standard": "Maximum 1 mg/kg",
+          "regulation": "PerBPOM No. 5/2018 Annex II",
+          "type": "heavy_metal",
+          "test_method": "ICP-OES",
+          "notes": "Contamination from stainless steel equipment"
+        },
+        {
+          "id": "08.3_heavy_006",
+          "name": "Tin (Sn)",
+          "standard": "Maximum 250 mg/kg (canned products only)",
+          "regulation": "PerBPOM No. 5/2018 Annex II",
+          "type": "heavy_metal",
+          "test_method": "ICP-OES",
+          "notes": "For canned meat products only"
+        },
+        {
+          "id": "08.3_label_001",
+          "name": "Meat Species Declaration",
+          "standard": "Must clearly state type of meat (beef, pork, chicken) in product name and ingredient list",
+          "regulation": "PerBPOM No. 22/2019 Article 7; PerBPOM No. 34/2019",
+          "type": "labeling",
+          "test_method": "Label review",
+          "notes": "Halal certification requires specific meat declaration"
+        },
+        {
+          "id": "08.3_label_002",
+          "name": "Nutrition Declaration",
+          "standard": "Required: energy, protein, fat, carbohydrate, sodium",
+          "regulation": "PerBPOM No. 22/2019 Article 5 and Annex I",
+          "type": "labeling",
+          "test_method": "Lab analysis + label review",
+          "notes": "Sodium content must be declared prominently for 'low sodium' claims"
+        },
+        {
+          "id": "08.3_label_003",
+          "name": "Nitrite/Nitrate Declaration",
+          "standard": "Must be declared if used as additive; 'No added nitrite' claim has specific requirements",
+          "regulation": "PerBPOM No. 11/2019; PerBPOM No. 22/2019",
+          "type": "labeling",
+          "test_method": "Label review",
+          "notes": "Natural nitrite from celery powder must also be declared"
+        },
+        {
+          "id": "08.3_label_004",
+          "name": "Storage and Cooking Instructions",
+          "standard": "Must state 'Keep refrigerated' and 'Cook thoroughly before consumption' for raw/cured products",
+          "regulation": "PerBPOM No. 22/2019 Article 11",
+          "type": "labeling",
+          "test_method": "Label review",
+          "notes": "Links to food safety requirements"
+        },
+        {
+          "id": "08.3_label_005",
+          "name": "Shelf Life and Expiry Date",
+          "standard": "Must show day/month/year; 'Use by' or 'Best before' format",
+          "regulation": "PerBPOM No. 22/2019 Article 10",
+          "type": "labeling",
+          "test_method": "Label review",
+          "notes": "Must match shelf life validation study"
+        },
+        {
+          "id": "08.3_label_006",
+          "name": "Allergen Declaration",
+          "standard": "Must declare gluten (if soy/wheat binders used), milk (whey powder), eggs (if used)",
+          "regulation": "PerBPOM No. 22/2019 Article 8; CAC/GL 74-2011",
+          "type": "labeling",
+          "test_method": "Label review",
+          "notes": "Hidden allergens in binders and fillers"
+        },
+        {
+          "id": "08.3_label_007",
+          "name": "BPOM Distribution License Number",
+          "standard": "ML followed by 11 digits",
+          "regulation": "PerBPOM No. 22/2019 Article 3",
+          "type": "labeling",
+          "test_method": "Label verification against BPOM database",
+          "notes": "Mandatory for domestic products"
+        },
+        {
+          "id": "08.3_label_008",
+          "name": "Halal Certification Mark (if applicable)",
+          "standard": "Must display halal logo from recognized certifier (MUI or recognized agency)",
+          "regulation": "PerBPOM No. 22/2019; Law No. 33/2014 on Halal Product Assurance",
+          "type": "labeling",
+          "test_method": "Label verification",
+          "notes": "Required for Muslim-majority market; pork ingredient must be declared"
+        }
+      ]
+    }
+  },
+  "confidence_threshold": 0.80,
+  "scoring_weights": {
+    "ingredient_overlap": 0.40,
+    "production_method": 0.30,
+    "claim_keywords": 0.30
+  },
+  "metadata": {
+    "maintainer": "ParamAI Team - President University",
+    "contact": "Muhammad Gale Adi Saputra (Team Leader)",
+    "competition": "AI Open Innovation Challenge 2026",
+    "next_update": "Quarterly review scheduled"
+  }
+}
