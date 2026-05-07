@@ -38,10 +38,14 @@ function ToastItem({ toast, onClose }: ToastProps) {
     // Auto-dismiss after duration
     const duration = toast.duration || 4000
     const timer = setTimeout(() => {
-      handleClose()
+      setIsLeaving(true)
+      setTimeout(() => {
+        onClose(toast.id)
+      }, 300)
     }, duration)
 
     return () => clearTimeout(timer)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [toast.duration])
 
   const handleClose = () => {

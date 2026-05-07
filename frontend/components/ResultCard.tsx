@@ -10,8 +10,8 @@
  */
 
 import { useState } from 'react'
-import { Loader2, FileText, Save, RotateCcw, AlertTriangle, CheckCircle2, FileDown } from 'lucide-react'
-import { RecommendationResult, Parameter } from '@/lib/types'
+import { Loader2, Save, RotateCcw, AlertTriangle, CheckCircle2 } from 'lucide-react'
+import { RecommendationResult } from '@/lib/types'
 import CategoryBadge from './CategoryBadge'
 import ParamTable from './ParamTable'
 import CopyCitations from './CopyCitations'
@@ -22,14 +22,6 @@ interface ResultCardProps {
   isLoading: boolean
   onNewQuery: () => void
   showLoadingSteps?: boolean
-  onCopyCitations?: () => void
-  onExportPdf?: () => void
-  // Additional props for features
-  parameters?: Parameter[]
-  productName?: string
-  categoryCode?: string
-  categoryName?: string
-  confidence?: number
 }
 
 // Loading step tracker
@@ -86,12 +78,6 @@ export default function ResultCard({
   isLoading,
   onNewQuery,
   showLoadingSteps = false,
-  onCopyCitations,
-  parameters,
-  productName,
-  categoryCode,
-  categoryName,
-  confidence,
 }: ResultCardProps) {
   // =============================================================================
   // EMPTY STATE — No result yet
@@ -233,7 +219,7 @@ export default function ResultCard({
               Alternative Categories
             </h4>
             <div className="space-y-2">
-              {safeResult.candidates.slice(1).map((candidate: any, index: number) => (
+              {safeResult.candidates.slice(1).map((candidate, index) => (
                 <div
                   key={candidate.code || index}
                   className="flex items-center justify-between py-2 px-3 rounded-lg"
