@@ -1,4 +1,4 @@
-from .claude_service import ClaudeService, default_service, extract_product_entities
+from .claude_service import SnifoxService, default_service, extract_product_entities
 from .rule_engine import BPOMRuleEngine
 from .classifier import (
     classify_and_recommend,
@@ -7,7 +7,7 @@ from .classifier import (
 )
 
 __all__ = [
-    "ClaudeService",
+    "SnifoxService",
     "default_service",
     "extract_product_entities",
     "BPOMRuleEngine",

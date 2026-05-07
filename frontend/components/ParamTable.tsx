@@ -3,6 +3,7 @@
 /**
  * ParamAI Frontend — Parameter Table Component
  * Displays testing parameters in a table format
+ * Design: Professional SaaS with dark header
  *
  * Competition: AI Open Innovation Challenge 2026
  * Team: Group 1, President University
@@ -16,12 +17,12 @@ interface ParamTableProps {
 
 // Type badge color mapping
 const TYPE_COLORS: Record<ParameterType, { bg: string; text: string }> = {
-  chemical: { bg: 'bg-blue-100', text: 'text-blue-700' },
-  microbiological: { bg: 'bg-amber-100', text: 'text-amber-700' },
-  heavy_metal: { bg: 'bg-red-100', text: 'text-red-700' },
-  labeling: { bg: 'bg-green-100', text: 'text-green-700' },
-  physical: { bg: 'bg-gray-100', text: 'text-gray-700' },
-  contaminant: { bg: 'bg-orange-100', text: 'text-orange-700' },
+  chemical: { bg: '#dbeafe', text: '#1e40af' },
+  microbiological: { bg: '#fef3c7', text: '#92400e' },
+  heavy_metal: { bg: '#fee2e2', text: '#991b1b' },
+  labeling: { bg: '#d1fae5', text: '#065f46' },
+  physical: { bg: '#f3f4f6', text: '#374151' },
+  contaminant: { bg: '#ffedd5', text: '#9a3412' },
 }
 
 const TYPE_LABELS: Record<ParameterType, string> = {
@@ -36,12 +37,12 @@ const TYPE_LABELS: Record<ParameterType, string> = {
 export default function ParamTable({ parameters }: ParamTableProps) {
   if (parameters.length === 0) {
     return (
-      <div className="bg-white rounded-xl shadow-sm p-6">
-        <h3 className="text-lg font-bold text-gray-900 mb-2">
+      <div className="rounded-xl p-6" style={{ backgroundColor: 'white', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}>
+        <h3 className="text-lg font-bold mb-2" style={{ color: '#1a1a2e' }}>
           Required Testing Parameters
         </h3>
-        <p className="text-sm text-gray-500">Based on BPOM regulations</p>
-        <div className="mt-6 text-center py-8 text-gray-500">
+        <p className="text-sm" style={{ color: '#6b7280' }}>Based on BPOM regulations</p>
+        <div className="mt-6 text-center py-8" style={{ color: '#9ca3af' }}>
           <p>No parameters available for this category.</p>
         </div>
       </div>
@@ -49,21 +50,31 @@ export default function ParamTable({ parameters }: ParamTableProps) {
   }
 
   return (
-    <div className="bg-white rounded-xl shadow-sm overflow-hidden">
+    <div
+      className="rounded-xl overflow-hidden"
+      style={{
+        backgroundColor: 'white',
+        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+      }}
+    >
       {/* Header */}
-      <div className="px-6 py-4 border-b border-gray-100">
-        <h3 className="text-lg font-bold text-gray-900">
-          Required Testing Parameters
-        </h3>
-        <p className="text-sm text-gray-500">Based on BPOM regulations</p>
+      <div
+        className="px-6 py-4"
+        style={{
+          backgroundColor: '#384884',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+        }}
+      >
+        <h3 className="text-lg font-bold text-white">Required Testing Parameters</h3>
+        <p className="text-sm text-white/70">Based on BPOM regulations</p>
       </div>
 
       {/* Table */}
       <div className="overflow-x-auto">
         <table className="w-full">
           {/* Table Header */}
-          <thead className="bg-[#1E3A5F]">
-            <tr>
+          <thead>
+            <tr style={{ backgroundColor: '#475569' }}>
               <th
                 scope="col"
                 className="px-6 py-3 text-left text-xs font-semibold text-white uppercase tracking-wider"
@@ -92,7 +103,7 @@ export default function ParamTable({ parameters }: ParamTableProps) {
           </thead>
 
           {/* Table Body */}
-          <tbody className="divide-y divide-gray-100">
+          <tbody>
             {parameters.map((param, index) => {
               const colors = TYPE_COLORS[param.type] || TYPE_COLORS.chemical
               const typeLabel = TYPE_LABELS[param.type] || param.type
@@ -100,25 +111,37 @@ export default function ParamTable({ parameters }: ParamTableProps) {
               return (
                 <tr
                   key={param.name}
-                  className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}
+                  style={
+                    index % 2 === 0
+                      ? { backgroundColor: 'white' }
+                      : { backgroundColor: '#f9fafb' }
+                  }
                 >
                   {/* Parameter Name */}
                   <td className="px-6 py-3">
-                    <span className="text-sm font-medium text-gray-900">
+                    <span className="text-sm font-semibold" style={{ color: '#1a1a2e' }}>
                       {param.name}
                     </span>
                   </td>
 
                   {/* Standard */}
                   <td className="px-6 py-3">
-                    <span className="text-sm text-gray-700">
+                    <span className="text-sm" style={{ color: '#374151' }}>
                       {param.standard}
                     </span>
                   </td>
 
                   {/* Regulation */}
                   <td className="px-6 py-3">
-                    <span className="text-sm text-gray-600 font-mono text-xs">
+                    <span
+                      className="text-xs font-mono"
+                      style={{
+                        color: '#4F6EF7',
+                        backgroundColor: '#eff6ff',
+                        padding: '2px 6px',
+                        borderRadius: '4px',
+                      }}
+                    >
                       {param.regulation}
                     </span>
                   </td>
@@ -126,7 +149,11 @@ export default function ParamTable({ parameters }: ParamTableProps) {
                   {/* Type Badge */}
                   <td className="px-6 py-3">
                     <span
-                      className={`px-2.5 py-1 text-xs font-medium rounded-full ${colors.bg} ${colors.text}`}
+                      className="px-2.5 py-1 text-xs font-semibold rounded-full"
+                      style={{
+                        backgroundColor: colors.bg,
+                        color: colors.text,
+                      }}
                     >
                       {typeLabel}
                     </span>
@@ -139,9 +166,15 @@ export default function ParamTable({ parameters }: ParamTableProps) {
       </div>
 
       {/* Footer — Summary */}
-      <div className="px-6 py-3 bg-gray-50 border-t border-gray-100">
-        <p className="text-xs text-gray-500">
-          Total: {parameters.length} parameters required for BPOM registration
+      <div
+        className="px-6 py-3"
+        style={{
+          backgroundColor: '#f9fafb',
+          borderTop: '1px solid #e5e7eb',
+        }}
+      >
+        <p className="text-xs" style={{ color: '#6b7280' }}>
+          Total: <strong>{parameters.length}</strong> parameters required for BPOM registration
         </p>
       </div>
     </div>

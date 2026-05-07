@@ -98,7 +98,7 @@ class BPOMRuleEngine:
         total_score = (
             ingredient_score * weights.get("ingredient_overlap", 0.40) +
             production_score * weights.get("production_method", 0.30) +
-            claim_score * weights.get("health_claim_match", 0.30)
+            claim_score * weights.get("claim_keywords", 0.30)
         )
 
         # Clamp to valid range

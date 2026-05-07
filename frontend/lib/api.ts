@@ -190,3 +190,33 @@ export async function checkApiHealth(): Promise<boolean> {
     return false
   }
 }
+
+// =============================================================================
+// Regulations API Functions
+// =============================================================================
+
+export interface RegulationsResponse {
+  version: string
+  last_updated: string
+  source_regulations: string[]
+  categories_count: number
+  metadata: {
+    maintainer?: string
+    contact?: string
+    competition?: string
+    next_update?: string
+  }
+}
+
+/**
+ * Get BPOM regulations information
+ */
+export async function getRegulations(): Promise<RegulationsResponse> {
+  try {
+    const result = await fetchApi<RegulationsResponse>('/regulations')
+    return result
+  } catch (error) {
+    console.error('Error fetching regulations:', error)
+    throw error
+  }
+}

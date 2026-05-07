@@ -1,0 +1,48 @@
+# ParamAI — Docker Compose Configuration
+# AI-Powered BPOM Food Testing Parameter Recommendation System
+# Competition: AI Open Innovation Challenge 2026
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: paramai-backend
+    environment:
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - MODEL_NAME=${MODEL_NAME:-anthropic/claude-sonnet-4.5}
+      - SNIFOX_BASE_URL=${SNIFOX_BASE_URL:-https://core.snifoxai.com/v1}
+      - CONFIDENCE_THRESHOLD=${CONFIDENCE_THRESHOLD:-0.80}
+      - MAX_CANDIDATES=${MAX_CANDIDATES:-3}
+      - ENVIRONMENT=production
+    ports:
+      - "8000:8000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    restart: unless-stopped
+    networks:
+      - paramai-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: paramai-frontend
+    environment:
+      - NEXT_PUBLIC_API_URL=http://backend:8000
+      - NODE_ENV=production
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - paramai-network
+
+networks:
+  paramai-network:
+    driver: bridge

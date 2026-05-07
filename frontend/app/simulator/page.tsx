@@ -3,71 +3,77 @@
 /**
  * ParamAI Frontend — Simulator Page
  * Product form + recommendation result
+ * Design: Professional SaaS with silver-blue background
  *
  * Competition: AI Open Innovation Challenge 2026
  * Team: Group 1, President University
  */
 
-import { useState, useEffect } from 'react'
-import { ProductInput, RecommendationResult } from '@/lib/types'
-import { recommend, getCategories } from '@/lib/api'
+import { useState } from 'react'
 import ProductForm from '@/components/ProductForm'
 import ResultCard from '@/components/ResultCard'
-import { Category } from '@/lib/types'
+import ApiStatus from '@/components/ApiStatus'
+import { ToastContainer, useToast } from '@/components/Toast'
+import { ProductInput, RecommendationResult } from '@/lib/types'
+import { recommend } from '@/lib/api'
 
 // Top bar component
 function SimulatorTopbar() {
   return (
-    <div className="bg-white border-b border-gray-200 px-6 py-4">
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <div>
-          <h1 className="text-2xl font-bold text-gray-900">Product Simulator</h1>
-          <p className="text-sm text-gray-500 mt-1">
-            Enter product details to get BPOM parameter recommendations
-          </p>
-        </div>
-        <div className="flex items-center gap-2">
-          <span className="px-3 py-1 text-xs font-medium bg-green-100 text-green-700 rounded-full">
-            API Ready
+    <div
+      className="px-6 py-5 flex items-center justify-between"
+      style={{
+        backgroundColor: 'white',
+        borderBottom: '1px solid #e5e7eb',
+      }}
+    >
+      <div>
+        <div className="flex items-center gap-3">
+          <h1 className="text-2xl font-bold" style={{ color: '#1a1a2e' }}>
+            Product Simulator
+          </h1>
+          <span
+            className="px-3 py-1 text-xs font-semibold rounded-full"
+            style={{
+              backgroundColor: '#d1fae5',
+              color: '#065f46',
+            }}
+          >
+            AI-Powered
           </span>
         </div>
+        <p className="text-sm mt-1" style={{ color: '#6b7280' }}>
+          Enter product details to get BPOM parameter recommendations
+        </p>
+      </div>
+      <div className="flex items-center gap-3">
+        <ApiStatus size="sm" autoRefresh={true} refreshInterval={30000} />
       </div>
     </div>
   )
 }
 
 export default function SimulatorPage() {
-  const [result, setResult] = useState<RecommendationResult | null>(null)
   const [isLoading, setIsLoading] = useState(false)
-  const [categories, setCategories] = useState<Category[]>([])
-  const [apiStatus, setApiStatus] = useState<'checking' | 'ready' | 'error'>('checking')
-
-  // Check API connection on mount
-  useEffect(() => {
-    const checkApi = async () => {
-      try {
-        const cats = await getCategories()
-        setCategories(cats)
-        setApiStatus('ready')
-      } catch (error) {
-        console.error('API not available:', error)
-        setApiStatus('error')
-      }
-    }
-    checkApi()
-  }, [])
+  const [result, setResult] = useState<RecommendationResult | null>(null)
+  const { toasts, toast, removeToast } = useToast()
 
   const handleSubmit = async (input: ProductInput) => {
     setIsLoading(true)
     setResult(null)
 
     try {
-      const recommendation = await recommend(input)
-      setResult(recommendation)
+      const data = await recommend(input)
+      setResult(data)
+      toast.success(
+        'Recommendation Ready!',
+        `Category ${data.category_code} matched with ${Math.round(data.confidence * 100)}% confidence`,
+        5000
+      )
     } catch (error) {
-      console.error('Recommendation error:', error)
-      // Keep result as null and show error state
-      alert(`Failed to get recommendation: ${error instanceof Error ? error.message : 'Unknown error'}`)
+      console.error('Error:', error)
+      const message = error instanceof Error ? error.message : 'Unable to process your request'
+      toast.error('Request Failed', message, 6000)
     } finally {
       setIsLoading(false)
     }
@@ -75,15 +81,19 @@ export default function SimulatorPage() {
 
   const handleNewQuery = () => {
     setResult(null)
+    toast.info('Form Reset', 'You can enter a new product now', 3000)
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className="min-h-screen flex flex-col">
+      {/* Toast Notifications */}
+      <ToastContainer toasts={toasts} onClose={removeToast} />
+
       {/* Top Bar */}
       <SimulatorTopbar />
 
       {/* Main Content - Two Column Layout */}
-      <div className="flex-1 p-6">
+      <div className="flex-1 p-6" style={{ backgroundColor: '#D8DAE7' }}>
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Left Panel - Product Form */}
           <div>
@@ -96,10 +106,14 @@ export default function SimulatorPage() {
               result={result}
               isLoading={isLoading}
               onNewQuery={handleNewQuery}
+              showLoadingSteps={isLoading}
             />
           </div>
         </div>
       </div>
+
+      {/* Spacer for footer */}
+      <div style={{ height: '48px' }}></div>
     </div>
   )
 }

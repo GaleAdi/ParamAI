@@ -3,6 +3,7 @@
 /**
  * ParamAI Frontend — Category Badge Component
  * Displays BPOM category with confidence score
+ * Design: Professional SaaS with gradient accents
  *
  * Competition: AI Open Innovation Challenge 2026
  * Team: Group 1, President University
@@ -28,79 +29,80 @@ export default function CategoryBadge({
     <div className="w-full">
       {/* Main Badge Card */}
       <div
-        className="bg-gradient-to-br from-blue-50 via-purple-50 to-blue-100
-                   rounded-xl p-4 border border-blue-100"
+        className="rounded-xl p-5"
+        style={{
+          background: isHighConfidence
+            ? 'linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%)'
+            : 'linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%)',
+          border: isHighConfidence ? '1px solid #a7f3d0' : '1px solid #fcd34d',
+        }}
       >
         <div className="flex items-start justify-between gap-4">
           {/* Left Side — Category Info */}
           <div className="flex-1">
-            <p className="text-xs font-medium text-blue-600 uppercase tracking-wide mb-1">
+            <p
+              className="text-xs font-semibold uppercase tracking-wider mb-2"
+              style={{
+                color: isHighConfidence ? '#059669' : '#d97706',
+              }}
+            >
               BPOM Product Category
             </p>
-            <div className="flex items-center gap-2">
-              <span className="px-2 py-0.5 text-xs font-mono font-semibold bg-blue-600 text-white rounded">
+            <div className="flex items-center gap-3 flex-wrap">
+              <span
+                className="px-3 py-1 text-sm font-bold font-mono rounded-lg"
+                style={{
+                  backgroundColor: isHighConfidence ? '#059669' : '#d97706',
+                  color: 'white',
+                }}
+              >
                 {category_code}
               </span>
-              <h3 className="text-lg font-bold text-gray-900">
+              <h3 className="text-lg font-bold" style={{ color: '#1a1a2e' }}>
                 {category_name}
               </h3>
             </div>
           </div>
 
           {/* Right Side — Confidence Badge */}
-          <div className="flex-shrink-0">
-            {isHighConfidence ? (
-              <div className="px-3 py-1.5 bg-green-500 rounded-full">
-                <span className="text-xs font-semibold text-white">
-                  Confidence: {confidencePercent}%
-                </span>
-              </div>
-            ) : (
-              <div className="px-3 py-1.5 bg-amber-500 rounded-full">
-                <span className="text-xs font-semibold text-white">
-                  Confidence: {confidencePercent}%
-                </span>
-              </div>
-            )}
+          <div
+            className="px-4 py-2 rounded-xl flex items-center gap-2"
+            style={{
+              backgroundColor: isHighConfidence ? '#10b981' : '#f59e0b',
+            }}
+          >
+            <span className="text-3xl font-bold text-white">{confidencePercent}%</span>
+            <span className="text-xs text-white/80">confidence</span>
           </div>
         </div>
 
-        {/* Additional Confidence Context */}
+        {/* Confidence Context */}
         {!isHighConfidence && (
-          <div className="mt-2 text-xs text-amber-700 font-medium">
-            Review recommended for optimal accuracy
+          <div className="mt-3 text-sm font-medium" style={{ color: '#92400e' }}>
+            <span style={{ marginRight: '6px' }}>&#9888;</span>
+            Below 80% threshold — expert review recommended
           </div>
         )}
       </div>
 
       {/* Warning Banner — shows only if review_flag is true */}
       {review_flag && (
-        <div className="mt-3 px-4 py-3 bg-amber-50 border border-amber-200 rounded-lg">
-          <div className="flex items-start gap-2">
-            <span className="text-amber-500 mt-0.5">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
-                <line x1="12" y1="9" x2="12" y2="13" />
-                <line x1="12" y1="17" x2="12.01" y2="17" />
-              </svg>
-            </span>
+        <div
+          className="mt-3 px-4 py-3 rounded-xl"
+          style={{
+            backgroundColor: '#fffbeb',
+            border: '1px solid #fcd34d',
+          }}
+        >
+          <div className="flex items-start gap-3">
+            <span style={{ fontSize: '24px', lineHeight: '1' }}>&#9888;</span>
             <div>
-              <p className="text-sm font-semibold text-amber-800">
+              <p className="text-sm font-bold" style={{ color: '#92400e' }}>
                 Multiple categories matched
               </p>
-              <p className="text-xs text-amber-700 mt-0.5">
+              <p className="text-xs mt-1" style={{ color: '#a16207' }}>
                 Expert review recommended to determine the correct classification.
-                Please consult a BPOM regulatory specialist.
+                Please consult a BPOM regulatory specialist before proceeding.
               </p>
             </div>
           </div>

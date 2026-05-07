@@ -40,8 +40,28 @@ __pycache__/
 *.py[cod]
 *$py.class
 .env
+.env.local
+.env.example
 .venv/
 venv/
 *.egg-info/
 dist/
 build/
+
+# images & thumbnails
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.ico
+
+# docker
+.dockerignore
+
+# claude (local settings)
+.claude/settings.local.json
+.claude/tasks/
+
+# IDE
+.idea/
+.vscode/

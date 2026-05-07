@@ -1,6 +1,6 @@
 """
-ParamAI — Claude API Service
-Handles all communication with Anthropic Claude API for entity extraction.
+ParamAI — Snifox AI Service
+Handles all communication with Snifox AI via OpenAI-compatible API for entity extraction.
 
 Competition: AI Open Innovation Challenge 2026
 Team: Group 1, President University
@@ -9,19 +9,19 @@ Team: Group 1, President University
 import json
 import logging
 import os
-import re
 from typing import Optional
 
-import anthropic
 from dotenv import load_dotenv
 from fastapi import HTTPException
+from openai import OpenAI
 
 # Load environment variables
 load_dotenv()
 
 # Configuration from environment
-ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")
-MODEL_NAME = os.getenv("MODEL_NAME", "claude-haiku-4-5-20251001")
+SNIFOX_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")
+SNIFOX_BASE_URL = os.getenv("SNIFOX_BASE_URL", "https://core.snifoxai.com/v1")
+MODEL_NAME = os.getenv("MODEL_NAME", "gpt-4o-mini")
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -55,30 +55,34 @@ dried, smoked, frozen, raw, blended, concentrated
 Only extract what is explicitly stated. Use null if not mentioned."""
 
 
-class ClaudeService:
-    """Service class for Claude API interactions."""
+class SnifoxService:
+    """Service class for Snifox AI interactions (OpenAI-compatible)."""
 
     def __init__(self, api_key: Optional[str] = None, model: Optional[str] = None):
-        """Initialize Claude service with optional API key and model override."""
-        self.api_key = api_key or ANTHROPIC_API_KEY
+        """Initialize Snifox service with optional API key and model override."""
+        self.api_key = api_key or SNIFOX_API_KEY
         self.model = model or MODEL_NAME
-        self._client: Optional[anthropic.Anthropic] = None
+        self.base_url = SNIFOX_BASE_URL
+        self._client: Optional[OpenAI] = None
 
     @property
-    def client(self) -> anthropic.Anthropic:
-        """Lazy initialization of Anthropic client."""
+    def client(self) -> OpenAI:
+        """Lazy initialization of OpenAI client pointing to Snifox."""
         if self._client is None:
             if not self.api_key or self.api_key == "your_key_here":
                 raise ValueError(
                     "ANTHROPIC_API_KEY is not set or is still set to placeholder. "
-                    "Please configure your API key in .env file."
+                    "Please configure your Snifox API key in .env file."
                 )
-            self._client = anthropic.Anthropic(api_key=self.api_key)
+            self._client = OpenAI(
+                api_key=self.api_key,
+                base_url=self.base_url,
+            )
         return self._client
 
     async def extract_product_entities(self, description: str) -> dict:
         """
-        Call Claude API to extract structured product entities from description.
+        Call Snifox AI to extract structured product entities from description.
 
         Args:
             description: Free-text product description from client
@@ -106,20 +110,24 @@ class ClaudeService:
         if not self.api_key or self.api_key == "your_key_here":
             raise HTTPException(
                 status_code=500,
-                detail="Claude API key not configured. Please set ANTHROPIC_API_KEY in .env"
+                detail="Snifox API key not configured. Please set ANTHROPIC_API_KEY in .env"
             )
 
         try:
-            logger.info(f"Calling Claude API with model: {self.model}")
+            logger.info(f"Calling Snifox AI with model: {self.model}")
+            logger.info(f"Base URL: {self.base_url}")
             logger.info(f"Description length: {len(description)} chars")
 
-            # Call Claude API
-            response = self.client.messages.create(
+            # Call Snifox AI via OpenAI-compatible endpoint
+            response = self.client.chat.completions.create(
                 model=self.model,
                 max_tokens=1024,
                 temperature=0.1,  # Low temperature for consistent extraction
-                system=SYSTEM_PROMPT,
                 messages=[
+                    {
+                        "role": "system",
+                        "content": SYSTEM_PROMPT
+                    },
                     {
                         "role": "user",
                         "content": f"Extract entities from this product description:\n{description}"
@@ -128,8 +136,8 @@ class ClaudeService:
             )
 
             # Extract response text
-            response_text = response.content[0].text.strip()
-            logger.info(f"Claude response received: {len(response_text)} chars")
+            response_text = response.choices[0].message.content.strip()
+            logger.info(f"Snifox response received: {len(response_text)} chars")
 
             # Parse JSON safely
             entities = self._parse_json_response(response_text)
@@ -140,41 +148,16 @@ class ClaudeService:
             logger.info("Entity extraction successful")
             return entities
 
-        except anthropic.APIError as e:
-            logger.error(f"Claude API error: {e}")
+        except Exception as e:
+            logger.error(f"Snifox API error: {e}")
             raise HTTPException(
                 status_code=502,
-                detail=f"Claude API error: {str(e)}"
-            )
-        except json.JSONDecodeError as e:
-            logger.error(f"JSON parse error: {e}")
-            logger.error(f"Raw response: {response_text[:500]}")
-            raise HTTPException(
-                status_code=500,
-                detail=f"Failed to parse Claude response as JSON: {str(e)}"
-            )
-        except Exception as e:
-            logger.error(f"Unexpected error: {e}")
-            raise HTTPException(
-                status_code=500,
-                detail=f"Entity extraction failed: {str(e)}"
+                detail=f"Snifox API error: {str(e)}"
             )
 
     def _parse_json_response(self, response_text: str) -> dict:
         """
-        Parse JSON from Claude response, handling various formats.
-
-        Claude sometimes returns JSON with markdown code blocks or with extra text.
-        This method handles those cases.
-
-        Args:
-            response_text: Raw text from Claude API
-
-        Returns:
-            dict: Parsed JSON as dictionary
-
-        Raises:
-            JSONDecodeError: If JSON cannot be parsed
+        Parse JSON from Snifox response, handling various formats.
         """
         # Remove markdown code blocks if present
         cleaned = response_text.strip()
@@ -193,27 +176,18 @@ class ClaudeService:
         cleaned = cleaned.strip()
 
         # Handle potential text before/after JSON
-        # Try to find JSON object boundaries
         json_start = cleaned.find('{')
         json_end = cleaned.rfind('}') + 1
 
         if json_start != -1 and json_end > json_start:
             cleaned = cleaned[json_start:json_end]
 
-        # Parse the cleaned JSON
         return json.loads(cleaned)
 
     def _validate_entities(self, entities: dict) -> None:
         """
         Validate that extracted entities have required structure.
-
-        Args:
-            entities: Parsed entity dictionary
-
-        Raises:
-            HTTPException: If validation fails
         """
-        # Define expected fields with their types
         required_fields = {
             "product_name": (str, type(None)),
             "ingredients": list,
@@ -233,25 +207,16 @@ class ClaudeService:
         if missing_fields:
             raise HTTPException(
                 status_code=500,
-                detail=f"Claude response missing required fields: {missing_fields}"
+                detail=f"Snifox response missing required fields: {missing_fields}"
             )
 
 
 # Default service instance for import
-default_service = ClaudeService()
+default_service = SnifoxService()
 
 
 async def extract_product_entities(description: str) -> dict:
     """
     Convenience function for entity extraction using default service.
-
-    Args:
-        description: Free-text product description
-
-    Returns:
-        dict: Extracted product entities
-
-    Raises:
-        HTTPException: On extraction failure
     """
     return await default_service.extract_product_entities(description)

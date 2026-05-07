@@ -1,6 +1,6 @@
 /**
  * ParamAI Frontend — Root Layout
- * AI-Powered BPOM Food Testing Parameter Recommendation System
+ * Design: Professional SaaS dashboard with dark navy sidebar
  *
  * Competition: AI Open Innovation Challenge 2026
  * Team: Group 1, President University
@@ -9,6 +9,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import Sidebar from '@/components/Sidebar'
+import { ToastProvider } from './providers'
 
 export const metadata: Metadata = {
   title: 'ParamAI - BPOM Testing Parameter Recommendation',
@@ -26,15 +27,43 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased">
-        <div className="flex h-screen">
-          {/* Sidebar Navigation */}
+        <ToastProvider>
+          {/* Sidebar Navigation - Fixed Left */}
           <Sidebar />
 
-          {/* Main Content Area */}
-          <main className="flex-1 ml-[220px] overflow-y-auto">
+          {/* Main Content Area - With margin to account for sidebar */}
+          <main
+            className="min-h-screen"
+            style={{ marginLeft: '240px', backgroundColor: '#D8DAE7' }}
+          >
             {children}
           </main>
-        </div>
+
+          {/* Footer Bar */}
+          <footer
+            className="fixed bottom-0 right-0 flex items-center justify-between px-6 py-3 text-white text-xs"
+            style={{
+              marginLeft: '240px',
+              backgroundColor: '#2d3a5c',
+              width: 'calc(100% - 240px)',
+            }}
+          >
+            <div className="flex items-center gap-6">
+              <span>© 2026 ParamAI - PT TUV Nord Indonesia</span>
+              <span className="text-white/60">|</span>
+              <span>AI Open Innovation Challenge 2026</span>
+            </div>
+            <div className="flex items-center gap-4">
+              <span className="text-white/60">Group 1 - President University</span>
+              <span
+                className="px-2 py-1 rounded text-[10px] font-semibold"
+                style={{ backgroundColor: '#4F6EF7' }}
+              >
+                v1.0.0
+              </span>
+            </div>
+          </footer>
+        </ToastProvider>
       </body>
     </html>
   )

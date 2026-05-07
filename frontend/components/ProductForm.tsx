@@ -3,19 +3,20 @@
 /**
  * ParamAI Frontend — Product Form Component
  * LEFT panel of the Simulator page
+ * Design: Clean white card with professional SaaS aesthetic
  *
  * Competition: AI Open Innovation Challenge 2026
  * Team: Group 1, President University
  */
 
 import { useState } from 'react'
-import { Loader2, ArrowRight } from 'lucide-react'
+import { Loader2, ArrowRight, Beaker } from 'lucide-react'
 import { ProductInput } from '@/lib/types'
 
 // Sample products for quick fill
 const SAMPLE_PRODUCTS = [
   {
-    name: 'Choc Biscuit',
+    name: 'Biscuit',
     data: {
       product_name: 'Chocolate Oat Biscuit',
       ingredients: 'oat flour, cocoa powder, vegetable fat, sugar, salt, baking powder',
@@ -25,7 +26,7 @@ const SAMPLE_PRODUCTS = [
     },
   },
   {
-    name: 'Mango Juice',
+    name: 'Juice',
     data: {
       product_name: 'Mango Juice Drink',
       ingredients: 'mango puree, water, sugar, citric acid, vitamin C',
@@ -35,7 +36,7 @@ const SAMPLE_PRODUCTS = [
     },
   },
   {
-    name: 'Whey Protein',
+    name: 'Protein',
     data: {
       product_name: 'Whey Protein Powder',
       ingredients: 'whey protein concentrate, emulsifier, artificial sweetener',
@@ -45,7 +46,7 @@ const SAMPLE_PRODUCTS = [
     },
   },
   {
-    name: 'Beef Sausage',
+    name: 'Sausage',
     data: {
       product_name: 'Beef Sausage',
       ingredients: 'beef meat, salt, sugar, nitrite, spices, soy protein',
@@ -96,7 +97,6 @@ export default function ProductForm({ onSubmit, isLoading }: ProductFormProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Only submit if at least product_name is filled
     if (formData.product_name.trim()) {
       onSubmit(formData)
     }
@@ -105,15 +105,33 @@ export default function ProductForm({ onSubmit, isLoading }: ProductFormProps) {
   const isFormValid = formData.product_name.trim().length > 0
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-6 h-full flex flex-col">
+    <div
+      className="rounded-2xl p-6 h-full flex flex-col"
+      style={{
+        backgroundColor: 'white',
+        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+      }}
+    >
       {/* Header */}
       <div className="mb-6">
-        <h2 className="text-xl font-bold text-gray-900 mb-1">
-          Product Description
-        </h2>
-        <p className="text-sm text-gray-500">
-          Describe your product to get BPOM parameter recommendations
-        </p>
+        <div className="flex items-center gap-3 mb-2">
+          <div
+            className="w-10 h-10 rounded-xl flex items-center justify-center"
+            style={{
+              background: 'linear-gradient(135deg, #4F6EF7 0%, #8B5CF6 100%)',
+            }}
+          >
+            <Beaker size={20} className="text-white" />
+          </div>
+          <div>
+            <h2 className="text-xl font-bold" style={{ color: '#1a1a2e' }}>
+              Product Analysis
+            </h2>
+            <p className="text-sm" style={{ color: '#6b7280' }}>
+              Enter product details for BPOM parameter recommendations
+            </p>
+          </div>
+        </div>
       </div>
 
       {/* Form */}
@@ -123,7 +141,8 @@ export default function ProductForm({ onSubmit, isLoading }: ProductFormProps) {
           <div>
             <label
               htmlFor="product_name"
-              className="block text-sm font-medium text-gray-700 mb-1"
+              className="block text-sm font-semibold mb-2"
+              style={{ color: '#1a1a2e' }}
             >
               Product Name <span className="text-red-500">*</span>
             </label>
@@ -134,9 +153,11 @@ export default function ProductForm({ onSubmit, isLoading }: ProductFormProps) {
               value={formData.product_name}
               onChange={handleInputChange}
               placeholder="e.g., Chocolate Oat Biscuit"
-              className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm
-                         focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
-                         placeholder-gray-400 transition-all"
+              className="w-full px-4 py-3 border rounded-xl text-sm transition-all duration-200"
+              style={{
+                borderColor: '#e5e7eb',
+                backgroundColor: '#f9fafb',
+              }}
               disabled={isLoading}
             />
           </div>
@@ -145,9 +166,10 @@ export default function ProductForm({ onSubmit, isLoading }: ProductFormProps) {
           <div>
             <label
               htmlFor="ingredients"
-              className="block text-sm font-medium text-gray-700 mb-1"
+              className="block text-sm font-semibold mb-2"
+              style={{ color: '#1a1a2e' }}
             >
-              Ingredients <span className="text-gray-400">(comma-separated)</span>
+              Ingredients <span className="font-normal text-gray-400">(comma-separated)</span>
             </label>
             <input
               type="text"
@@ -156,9 +178,11 @@ export default function ProductForm({ onSubmit, isLoading }: ProductFormProps) {
               value={formData.ingredients}
               onChange={handleInputChange}
               placeholder="e.g., flour, sugar, cocoa powder, butter"
-              className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm
-                         focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
-                         placeholder-gray-400 transition-all"
+              className="w-full px-4 py-3 border rounded-xl text-sm transition-all duration-200"
+              style={{
+                borderColor: '#e5e7eb',
+                backgroundColor: '#f9fafb',
+              }}
               disabled={isLoading}
             />
           </div>
@@ -167,7 +191,8 @@ export default function ProductForm({ onSubmit, isLoading }: ProductFormProps) {
           <div>
             <label
               htmlFor="production_method"
-              className="block text-sm font-medium text-gray-700 mb-1"
+              className="block text-sm font-semibold mb-2"
+              style={{ color: '#1a1a2e' }}
             >
               Production Method
             </label>
@@ -178,9 +203,11 @@ export default function ProductForm({ onSubmit, isLoading }: ProductFormProps) {
               value={formData.production_method}
               onChange={handleInputChange}
               placeholder="e.g., baked at 180°C, fermented, pasteurized"
-              className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm
-                         focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
-                         placeholder-gray-400 transition-all"
+              className="w-full px-4 py-3 border rounded-xl text-sm transition-all duration-200"
+              style={{
+                borderColor: '#e5e7eb',
+                backgroundColor: '#f9fafb',
+              }}
               disabled={isLoading}
             />
           </div>
@@ -189,7 +216,8 @@ export default function ProductForm({ onSubmit, isLoading }: ProductFormProps) {
           <div>
             <label
               htmlFor="target_consumer"
-              className="block text-sm font-medium text-gray-700 mb-1"
+              className="block text-sm font-semibold mb-2"
+              style={{ color: '#1a1a2e' }}
             >
               Target Consumer
             </label>
@@ -200,9 +228,11 @@ export default function ProductForm({ onSubmit, isLoading }: ProductFormProps) {
               value={formData.target_consumer}
               onChange={handleInputChange}
               placeholder="e.g., children, adults, elderly"
-              className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm
-                         focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
-                         placeholder-gray-400 transition-all"
+              className="w-full px-4 py-3 border rounded-xl text-sm transition-all duration-200"
+              style={{
+                borderColor: '#e5e7eb',
+                backgroundColor: '#f9fafb',
+              }}
               disabled={isLoading}
             />
           </div>
@@ -211,9 +241,10 @@ export default function ProductForm({ onSubmit, isLoading }: ProductFormProps) {
           <div>
             <label
               htmlFor="health_claims"
-              className="block text-sm font-medium text-gray-700 mb-1"
+              className="block text-sm font-semibold mb-2"
+              style={{ color: '#1a1a2e' }}
             >
-              Health Claims <span className="text-gray-400">(optional)</span>
+              Health Claims <span className="font-normal text-gray-400">(optional)</span>
             </label>
             <input
               type="text"
@@ -222,9 +253,11 @@ export default function ProductForm({ onSubmit, isLoading }: ProductFormProps) {
               value={formData.health_claims}
               onChange={handleInputChange}
               placeholder="e.g., high fiber, probiotic, natural"
-              className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm
-                         focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
-                         placeholder-gray-400 transition-all"
+              className="w-full px-4 py-3 border rounded-xl text-sm transition-all duration-200"
+              style={{
+                borderColor: '#e5e7eb',
+                backgroundColor: '#f9fafb',
+              }}
               disabled={isLoading}
             />
           </div>
@@ -232,7 +265,9 @@ export default function ProductForm({ onSubmit, isLoading }: ProductFormProps) {
 
         {/* Sample Products */}
         <div className="mt-4 mb-4">
-          <p className="text-xs text-gray-500 mb-2">Try sample products:</p>
+          <p className="text-xs font-medium mb-2" style={{ color: '#6b7280' }}>
+            Try sample products:
+          </p>
           <div className="flex flex-wrap gap-2">
             {SAMPLE_PRODUCTS.map((sample) => (
               <button
@@ -240,10 +275,22 @@ export default function ProductForm({ onSubmit, isLoading }: ProductFormProps) {
                 type="button"
                 onClick={() => handleSampleProduct(sample)}
                 disabled={isLoading}
-                className="px-3 py-1.5 text-xs font-medium rounded-full
-                           border border-gray-200 text-gray-600
-                           hover:border-blue-400 hover:bg-blue-50 hover:text-blue-600
-                           transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-3 py-1.5 text-xs font-medium rounded-lg transition-all duration-200"
+                style={{
+                  border: '1px solid #e5e7eb',
+                  color: '#6b7280',
+                  backgroundColor: 'white',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = '#4F6EF7'
+                  e.currentTarget.style.color = '#4F6EF7'
+                  e.currentTarget.style.backgroundColor = '#eff6ff'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = '#e5e7eb'
+                  e.currentTarget.style.color = '#6b7280'
+                  e.currentTarget.style.backgroundColor = 'white'
+                }}
               >
                 {sample.name}
               </button>
@@ -255,26 +302,29 @@ export default function ProductForm({ onSubmit, isLoading }: ProductFormProps) {
         <button
           type="submit"
           disabled={!isFormValid || isLoading}
-          className={`
-            w-full py-3.5 px-6 rounded-xl font-semibold text-white
+          className="
+            w-full py-4 px-6 rounded-xl font-semibold text-white
             flex items-center justify-center gap-2
             transition-all duration-200
-            ${
-              isFormValid && !isLoading
-                ? 'bg-gradient-to-r from-[#4F6EF7] to-[#6B83F8] hover:shadow-lg hover:scale-[1.02] cursor-pointer'
-                : 'bg-gray-300 cursor-not-allowed'
-            }
-          `}
+          "
+          style={
+            isFormValid && !isLoading
+              ? {
+                  background: 'linear-gradient(135deg, #4F6EF7 0%, #6B83F8 100%)',
+                  boxShadow: '0 4px 6px -1px rgba(79, 110, 247, 0.3)',
+                }
+              : { backgroundColor: '#d1d5db' }
+          }
         >
           {isLoading ? (
             <>
-              <Loader2 size={18} className="animate-spin" />
-              <span>Analyzing...</span>
+              <Loader2 size={20} className="animate-spin" />
+              <span>Analyzing Product...</span>
             </>
           ) : (
             <>
               <span>Analyze Product</span>
-              <ArrowRight size={18} />
+              <ArrowRight size={20} />
             </>
           )}
         </button>

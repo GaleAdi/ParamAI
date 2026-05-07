@@ -23,7 +23,7 @@ load_dotenv()
 
 # Get API key and config from environment
 ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")
-MODEL_NAME = os.getenv("MODEL_NAME", "claude-haiku-4-5-20251001")
+MODEL_NAME = os.getenv("MODEL_NAME", "claude-haiku-4-20250514")
 CONFIDENCE_THRESHOLD = float(os.getenv("CONFIDENCE_THRESHOLD", "0.80"))
 MAX_CANDIDATES = int(os.getenv("MAX_CANDIDATES", "3"))
 
@@ -109,6 +109,22 @@ async def list_categories():
             "parameter_count": len(cat.get("parameters", [])),
         })
     return {"categories": categories, "total": len(categories)}
+
+
+@app.get("/regulations", tags=["Regulations"])
+async def get_regulations():
+    """
+    Get list of BPOM regulations used in the knowledge base.
+    Returns source regulations and their last update date.
+    """
+    rules = app.state.bpom_rules
+    return {
+        "version": rules.get("version", "1.0.0"),
+        "last_updated": rules.get("last_updated", ""),
+        "source_regulations": rules.get("source_regulations", []),
+        "categories_count": len(rules.get("categories", {})),
+        "metadata": rules.get("metadata", {}),
+    }
 
 
 # Export settings for use in other modules

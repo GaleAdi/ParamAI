@@ -76,10 +76,13 @@ export interface RecommendationResult {
 export interface HistoryItem {
   id: string
   timestamp: string
-  product_name: string
-  category_name: string
+  input_summary: string      // from backend (renamed to match actual backend field)
+  product_name?: string     // filled by frontend from input_summary
+  category_code: string     // from backend 'category_code'
+  category_name: string     // filled by frontend from category_code mapping
   confidence: number
   review_flag: boolean
+  parameters_count?: number  // optional, from backend
 }
 
 export interface HistoryResponse {
