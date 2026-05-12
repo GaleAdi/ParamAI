@@ -17,7 +17,7 @@ const PUBLIC_ROUTES = ['/login', '/api/auth', '/simulator', '/history', '/help',
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
-  const sessionCookie = request.cookies.get('paramai_session')
+  const sessionCookie = request.cookies.get('paramai_auth')
 
   // Allow public routes
   if (PUBLIC_ROUTES.some(route => pathname.startsWith(route))) {
