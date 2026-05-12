@@ -6,12 +6,23 @@
  * Design: Professional SaaS with silver-blue background
  *
  * Competition: AI Open Innovation Challenge 2026
- * Team: Group 1, President University
+ * Team: Kebut Semalam, President University
  */
 
+import { useAuth } from '@/lib/useAuth'
 import Dashboard from '@/components/Dashboard'
 
+function getGreeting() {
+  const hour = new Date().getHours()
+  if (hour < 12) return 'Good morning'
+  if (hour < 17) return 'Good afternoon'
+  return 'Good evening'
+}
+
 export default function DashboardPage() {
+  const { user } = useAuth()
+  const username = user.username || 'Team'
+
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#D8DAE7' }}>
       {/* Page Header */}
@@ -23,10 +34,10 @@ export default function DashboardPage() {
         }}
       >
         <h1 className="text-2xl font-bold" style={{ color: '#1a1a2e' }}>
-          Good morning, Team!
+          {getGreeting()}, {username}!
         </h1>
         <p className="text-sm mt-1" style={{ color: '#6b7280' }}>
-          Here's what's happening with ParamAI today
+          Here&apos;s what&apos;s happening with ParamAI today
         </p>
       </div>
 

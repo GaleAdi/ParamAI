@@ -220,3 +220,36 @@ export async function getRegulations(): Promise<RegulationsResponse> {
     throw error
   }
 }
+
+// =============================================================================
+// Stats API Functions (Admin Only)
+// =============================================================================
+
+export interface StatsResponse {
+  total_requests: number
+  total_input_tokens: number
+  total_output_tokens: number
+  total_cost_usd: number
+  average_cost_per_request: number
+  last_request_at: string | null
+  server_started_at: string
+  history_count: number
+  pricing_model: {
+    model: string
+    per_1m_input_usd: number
+    per_1m_output_usd: number
+  }
+}
+
+/**
+ * Get API usage statistics and cost metrics (admin dashboard)
+ */
+export async function getStats(): Promise<StatsResponse> {
+  try {
+    const result = await fetchApi<StatsResponse>('/stats')
+    return result
+  } catch (error) {
+    console.error('Error fetching stats:', error)
+    throw error
+  }
+}

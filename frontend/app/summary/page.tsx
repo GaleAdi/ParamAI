@@ -11,8 +11,9 @@
 
 import { useState, useEffect } from 'react'
 import { FileText, TrendingUp, Clock, DollarSign, BarChart3 } from 'lucide-react'
-import { getCategories, getHistory } from '@/lib/api'
+import { getCategories, getHistory, getStats } from '@/lib/api'
 import type { HistoryItem, Category } from '@/lib/types'
+import type { StatsResponse } from '@/lib/api'
 
 interface SummaryStat {
   icon: typeof Clock
@@ -34,6 +35,7 @@ export default function SummaryPage() {
   const [loading, setLoading] = useState(true)
   const [history, setHistory] = useState<HistoryItem[]>([])
   const [categories, setCategories] = useState<Category[]>([])
+  const [stats, setStats] = useState<StatsResponse | null>(null)
   const [summaryStats, setSummaryStats] = useState<SummaryStat[]>([])
   const [categoryStats, setCategoryStats] = useState<CategoryStat[]>([])
 
@@ -41,12 +43,14 @@ export default function SummaryPage() {
     const fetchData = async () => {
       try {
         setLoading(true)
-        const [hist, cats] = await Promise.all([
+        const [hist, cats, apiStats] = await Promise.all([
           getHistory(),
           getCategories(),
+          getStats(),
         ])
         setHistory(hist)
         setCategories(cats)
+        setStats(apiStats)
 
         // Calculate real stats
         const totalQueries = hist.length
@@ -54,7 +58,7 @@ export default function SummaryPage() {
           ? Math.round(hist.reduce((sum, h) => sum + h.confidence, 0) / totalQueries * 100)
           : 0
         const timeSavedMinutes = totalQueries * 25
-        const apiCost = (totalQueries * 0.003).toFixed(3)
+        const apiCost = apiStats ? apiStats.total_cost_usd : 0
 
         // Format time saved
         const hoursSaved = Math.floor(timeSavedMinutes / 60)
@@ -89,7 +93,7 @@ export default function SummaryPage() {
           {
             icon: DollarSign,
             label: 'API Cost',
-            value: `$${apiCost}`,
+            value: apiCost < 0.01 ? '<$0.01' : `$${apiCost.toFixed(4)}`,
             subtext: 'Claude API usage',
             color: '#f59e0b',
             bgColor: '#fef3c7',
@@ -246,12 +250,6 @@ export default function SummaryPage() {
             <div className="space-y-4">
               {[
                 {
-                  label: 'Claude API Cost per Query',
-                  value: '$0.003',
-                  color: '#374151',
-                  hidden: true
-                },
-                {
                   label: 'Avg. Manual Lookup Time',
                   value: '25 min',
                   color: '#374151'
@@ -262,11 +260,17 @@ export default function SummaryPage() {
                   color: '#10b981'
                 },
                 {
+                  label: 'Total API Requests',
+                  value: stats ? String(stats.total_requests) : String(history.length),
+                  color: '#374151'
+                },
+                {
                   label: 'Session API Cost',
-                  value: `$${(history.length * 0.003).toFixed(3)}`,
+                  value: stats
+                    ? (stats.total_cost_usd < 0.01 ? '<$0.01' : `$${stats.total_cost_usd.toFixed(4)}`)
+                    : '$0.00',
                   color: '#10b981',
                   bold: true,
-                  hidden: true
                 },
               ].map((item, index) => (
                 <div
@@ -276,10 +280,10 @@ export default function SummaryPage() {
                 >
                   <span className="text-sm" style={{ color: '#6b7280' }}>{item.label}</span>
                   <span
-                    className="text-sm font-bold"
-                    style={{ color: item.color, fontSize: item.bold ? '18px' : '14px' }}
+                    className={`text-sm ${item.bold ? 'font-bold' : 'font-medium'}`}
+                    style={{ color: item.color }}
                   >
-                    {item.hidden ? '••••••' : item.value}
+                    {item.value}
                   </span>
                 </div>
               ))}

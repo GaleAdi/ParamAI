@@ -19,9 +19,10 @@ import {
   Cell,
   Tooltip,
 } from 'recharts'
-import { CheckCircle, Clock, TrendingUp, Activity } from 'lucide-react'
-import { getCategories, getHistory } from '@/lib/api'
+import { CheckCircle, Clock, TrendingUp, Activity, DollarSign } from 'lucide-react'
+import { getCategories, getHistory, getStats } from '@/lib/api'
 import type { Category, HistoryItem } from '@/lib/types'
+import type { StatsResponse } from '@/lib/api'
 
 // Ring progress SVG component
 function RingProgress({
@@ -101,20 +102,31 @@ function KPICard({
 export default function Dashboard() {
   const [categories, setCategories] = useState<Category[]>([])
   const [history, setHistory] = useState<HistoryItem[]>([])
+  const [stats, setStats] = useState<StatsResponse | null>(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         setLoading(true)
-        const [cats, hist] = await Promise.all([
+        const [cats, hist, apiStats] = await Promise.all([
           getCategories(),
           getHistory(),
+          getStats(),
         ])
         setCategories(cats)
         setHistory(hist)
+        setStats(apiStats)
       } catch (error) {
         console.error('Error fetching dashboard data:', error)
+        // Still set categories/history even if stats fails
+        try {
+          const [cats, hist] = await Promise.all([getCategories(), getHistory()])
+          setCategories(cats)
+          setHistory(hist)
+        } catch {
+          // ignore
+        }
       } finally {
         setLoading(false)
       }
@@ -209,12 +221,18 @@ export default function Dashboard() {
             <p className="text-xs text-white/80 mt-1">Time Saved (est.)</p>
           </div>
           <div className="bg-white/10 backdrop-blur rounded-xl p-4 text-center border border-white/20">
-            <p className="text-3xl font-bold">{totalQueries}</p>
-            <p className="text-xs text-white/80 mt-1">Queries Processed</p>
+            <p className="text-3xl font-bold">
+              {stats ? stats.total_requests : totalQueries}
+            </p>
+            <p className="text-xs text-white/80 mt-1">API Requests</p>
           </div>
           <div className="bg-white/10 backdrop-blur rounded-xl p-4 text-center border border-white/20">
-            <p className="text-3xl font-bold text-white/60">***</p>
-            <p className="text-xs text-white/80 mt-1">API Cost (Internal)</p>
+            <p className="text-3xl font-bold">
+              {stats
+                ? `$${stats.total_cost_usd < 0.01 ? '<$0.01' : stats.total_cost_usd.toFixed(4)}`
+                : '***'}
+            </p>
+            <p className="text-xs text-white/80 mt-1">API Cost (USD)</p>
           </div>
         </div>
       </div>

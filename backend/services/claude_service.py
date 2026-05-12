@@ -23,6 +23,10 @@ SNIFOX_API_KEY = os.getenv("ANTHROPIC_API_KEY") or os.getenv("SNIFOX_API_KEY") o
 SNIFOX_BASE_URL = os.getenv("SNIFOX_BASE_URL") or "https://core.snifoxai.com/v1"
 MODEL_NAME = os.getenv("MODEL_NAME") or "anthropic/claude-sonnet-4.5"
 
+# Pricing for cost calculation
+COST_PER_1M_INPUT_TOKENS = 3.0
+COST_PER_1M_OUTPUT_TOKENS = 15.0
+
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -92,6 +96,19 @@ class SnifoxService:
             logger.info("[SnifoxService] OpenAI client created successfully")
         return self._client
 
+    def _record_usage(self, input_tokens: int, output_tokens: int) -> float:
+        """Record API usage and return cost for this request."""
+        input_cost = (input_tokens / 1_000_000) * COST_PER_1M_INPUT_TOKENS
+        output_cost = (output_tokens / 1_000_000) * COST_PER_1M_OUTPUT_TOKENS
+        total_cost = input_cost + output_cost
+
+        logger.info(
+            f"[SnifoxService] Usage recorded - "
+            f"input={input_tokens} tokens, output={output_tokens} tokens, "
+            f"cost=${total_cost:.6f}"
+        )
+        return total_cost
+
     async def extract_product_entities(self, description: str) -> dict:
         """
         Call Snifox AI to extract structured product entities from description.
@@ -127,7 +144,6 @@ class SnifoxService:
 
         try:
             logger.info(f"[SnifoxService] Calling Snifox AI - Model: {self.model}, Base URL: {self.base_url}")
-            logger.info(f"[SnifoxService] API Key length: {len(self.api_key) if self.api_key else 0}")
             logger.info(f"[SnifoxService] Description length: {len(description)} chars")
 
             # Call Snifox AI via OpenAI-compatible endpoint
@@ -150,6 +166,27 @@ class SnifoxService:
             # Extract response text
             response_text = response.choices[0].message.content.strip()
             logger.info(f"Snifox response received: {len(response_text)} chars")
+
+            # Extract usage data from response
+            usage = getattr(response, 'usage', None)
+            if usage:
+                input_tokens = getattr(usage, 'prompt_tokens', 0)
+                output_tokens = getattr(usage, 'completion_tokens', 0)
+                request_cost = self._record_usage(input_tokens, output_tokens)
+
+                # Also try to record in app.state usage_stats if available
+                try:
+                    from main import app as main_app
+                    stats = getattr(main_app.state, 'usage_stats', None)
+                    if stats is not None:
+                        stats['total_requests'] += 1
+                        stats['total_input_tokens'] += input_tokens
+                        stats['total_output_tokens'] += output_tokens
+                        stats['total_cost_usd'] += request_cost
+                        from datetime import datetime
+                        stats['last_request_at'] = datetime.utcnow().isoformat()
+                except Exception:
+                    pass  # Non-critical - stats may not be available in all contexts
 
             # Parse JSON safely
             entities = self._parse_json_response(response_text)
