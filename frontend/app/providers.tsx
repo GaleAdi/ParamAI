@@ -1,17 +1,16 @@
 'use client'
 
 /**
- * ParamAI Frontend — Toast Provider
- * Context provider for toast notifications throughout the app
+ * ParamAI Frontend — Toast & Auth Providers
+ * Context providers for toast notifications and authentication throughout the app
  *
  * Competition: AI Open Innovation Challenge 2026
- * Team: Group 1, President University
+ * Team: Kebut Semalam, President University
  */
 
-'use client'
-
 import { createContext, useContext, ReactNode } from 'react'
-import { ToastContainer, useToast, Toast, ToastType } from '@/components/Toast'
+import { ToastContainer, useToast } from '@/components/Toast'
+import { AuthProvider } from '@/lib/useAuth'
 
 // Define the toast context type
 interface ToastContextType {
@@ -49,3 +48,6 @@ export function useToastMessage() {
 
 // Export types for use in other components
 export type { ToastContextType }
+
+// Re-export auth components
+export { AuthProvider } from '@/lib/useAuth'
