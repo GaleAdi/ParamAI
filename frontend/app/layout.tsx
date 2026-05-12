@@ -41,20 +41,15 @@ export default function RootLayout({
 
           {/* Footer Bar */}
           <footer
-            className="fixed bottom-0 right-0 flex items-center justify-between px-6 py-3 text-white text-xs"
+            className="fixed bottom-0 right-0 flex items-center justify-end px-6 py-3 text-white text-xs"
             style={{
               marginLeft: '240px',
               backgroundColor: '#2d3a5c',
               width: 'calc(100% - 240px)',
             }}
           >
-            <div className="flex items-center gap-6">
-              <span>© 2026 ParamAI - PT TUV Nord Indonesia</span>
-              <span className="text-white/60">|</span>
-              <span>AI Open Innovation Challenge 2026</span>
-            </div>
             <div className="flex items-center gap-4">
-              <span className="text-white/60">Group 1 - President University</span>
+              <span className="text-white/60">Team Kebut Semalam - President University</span>
               <span
                 className="px-2 py-1 rounded text-[10px] font-semibold"
                 style={{ backgroundColor: '#4F6EF7' }}

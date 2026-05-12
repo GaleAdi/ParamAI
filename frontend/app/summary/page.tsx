@@ -248,7 +248,8 @@ export default function SummaryPage() {
                 {
                   label: 'Claude API Cost per Query',
                   value: '$0.003',
-                  color: '#374151'
+                  color: '#374151',
+                  hidden: true
                 },
                 {
                   label: 'Avg. Manual Lookup Time',
@@ -264,7 +265,8 @@ export default function SummaryPage() {
                   label: 'Session API Cost',
                   value: `$${(history.length * 0.003).toFixed(3)}`,
                   color: '#10b981',
-                  bold: true
+                  bold: true,
+                  hidden: true
                 },
               ].map((item, index) => (
                 <div
@@ -277,7 +279,7 @@ export default function SummaryPage() {
                     className="text-sm font-bold"
                     style={{ color: item.color, fontSize: item.bold ? '18px' : '14px' }}
                   >
-                    {item.value}
+                    {item.hidden ? '••••••' : item.value}
                   </span>
                 </div>
               ))}

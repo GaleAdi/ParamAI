@@ -213,8 +213,8 @@ export default function Dashboard() {
             <p className="text-xs text-white/80 mt-1">Queries Processed</p>
           </div>
           <div className="bg-white/10 backdrop-blur rounded-xl p-4 text-center border border-white/20">
-            <p className="text-3xl font-bold">${(totalQueries * 0.003).toFixed(3)}</p>
-            <p className="text-xs text-white/80 mt-1">API Cost</p>
+            <p className="text-3xl font-bold text-white/60">***</p>
+            <p className="text-xs text-white/80 mt-1">API Cost (Internal)</p>
           </div>
         </div>
       </div>
