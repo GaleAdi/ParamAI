@@ -23,13 +23,13 @@ SNIFOX_API_KEY = os.getenv("ANTHROPIC_API_KEY") or os.getenv("SNIFOX_API_KEY") o
 SNIFOX_BASE_URL = os.getenv("SNIFOX_BASE_URL") or "https://core.snifoxai.com/v1"
 MODEL_NAME = os.getenv("MODEL_NAME") or "anthropic/claude-sonnet-4.5"
 
-# Debug log
-logger.info(f"API Key loaded: {'Yes' if SNIFOX_API_KEY else 'No'}")
-logger.info(f"API Key length: {len(SNIFOX_API_KEY) if SNIFOX_API_KEY else 0}")
-
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
+# Debug log (after logger is defined)
+logger.info(f"API Key loaded: {'Yes' if SNIFOX_API_KEY else 'No'}")
+logger.info(f"API Key length: {len(SNIFOX_API_KEY) if SNIFOX_API_KEY else 0}")
 
 # System prompt for entity extraction
 SYSTEM_PROMPT = """You are a regulatory classification assistant for PT TUV Nord Indonesia.
@@ -226,8 +226,6 @@ class SnifoxService:
 # Default service instance for import
 # Note: API key will be read at runtime, not at import time
 default_service = SnifoxService()
-
-logger.info(f"Module loaded - SNIFOX_API_KEY present: {bool(SNIFOX_API_KEY)}, length: {len(SNIFOX_API_KEY) if SNIFOX_API_KEY else 0}")
 
 
 async def extract_product_entities(description: str) -> dict:
