@@ -15,13 +15,17 @@ from dotenv import load_dotenv
 from fastapi import HTTPException
 from openai import OpenAI
 
-# Load environment variables
+# Load environment variables (only for local development)
 load_dotenv()
 
 # Configuration from environment
-SNIFOX_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")
-SNIFOX_BASE_URL = os.getenv("SNIFOX_BASE_URL", "https://core.snifoxai.com/v1")
-MODEL_NAME = os.getenv("MODEL_NAME", "gpt-4o-mini")
+SNIFOX_API_KEY = os.getenv("ANTHROPIC_API_KEY") or os.getenv("SNIFOX_API_KEY") or ""
+SNIFOX_BASE_URL = os.getenv("SNIFOX_BASE_URL") or "https://core.snifoxai.com/v1"
+MODEL_NAME = os.getenv("MODEL_NAME") or "anthropic/claude-sonnet-4.5"
+
+# Debug log
+logger.info(f"API Key loaded: {'Yes' if SNIFOX_API_KEY else 'No'}")
+logger.info(f"API Key length: {len(SNIFOX_API_KEY) if SNIFOX_API_KEY else 0}")
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -60,24 +64,32 @@ class SnifoxService:
 
     def __init__(self, api_key: Optional[str] = None, model: Optional[str] = None):
         """Initialize Snifox service with optional API key and model override."""
-        self.api_key = api_key or SNIFOX_API_KEY
+        # Try multiple env var names to be safe
+        env_key = os.getenv("ANTHROPIC_API_KEY") or os.getenv("SNIFOX_API_KEY") or ""
+        self.api_key = api_key or env_key
         self.model = model or MODEL_NAME
         self.base_url = SNIFOX_BASE_URL
         self._client: Optional[OpenAI] = None
+
+        logger.info(f"[SnifoxService] Initialized - API Key present: {bool(self.api_key)}, Key length: {len(self.api_key) if self.api_key else 0}")
+        logger.info(f"[SnifoxService] Model: {self.model}, Base URL: {self.base_url}")
 
     @property
     def client(self) -> OpenAI:
         """Lazy initialization of OpenAI client pointing to Snifox."""
         if self._client is None:
+            logger.info(f"[SnifoxService] Creating OpenAI client - API Key length: {len(self.api_key) if self.api_key else 0}")
             if not self.api_key or self.api_key == "your_key_here":
+                logger.error(f"[SnifoxService] API Key check FAILED - Key: '{self.api_key}'")
                 raise ValueError(
                     "ANTHROPIC_API_KEY is not set or is still set to placeholder. "
-                    "Please configure your Snifox API key in .env file."
+                    "Please configure your Snifox API key in Railway environment variables."
                 )
             self._client = OpenAI(
                 api_key=self.api_key,
                 base_url=self.base_url,
             )
+            logger.info("[SnifoxService] OpenAI client created successfully")
         return self._client
 
     async def extract_product_entities(self, description: str) -> dict:
@@ -110,13 +122,13 @@ class SnifoxService:
         if not self.api_key or self.api_key == "your_key_here":
             raise HTTPException(
                 status_code=500,
-                detail="Snifox API key not configured. Please set ANTHROPIC_API_KEY in .env"
+                detail="Snifox API key not configured. Please set ANTHROPIC_API_KEY in Railway environment variables."
             )
 
         try:
-            logger.info(f"Calling Snifox AI with model: {self.model}")
-            logger.info(f"Base URL: {self.base_url}")
-            logger.info(f"Description length: {len(description)} chars")
+            logger.info(f"[SnifoxService] Calling Snifox AI - Model: {self.model}, Base URL: {self.base_url}")
+            logger.info(f"[SnifoxService] API Key length: {len(self.api_key) if self.api_key else 0}")
+            logger.info(f"[SnifoxService] Description length: {len(description)} chars")
 
             # Call Snifox AI via OpenAI-compatible endpoint
             response = self.client.chat.completions.create(
@@ -212,7 +224,10 @@ class SnifoxService:
 
 
 # Default service instance for import
+# Note: API key will be read at runtime, not at import time
 default_service = SnifoxService()
+
+logger.info(f"Module loaded - SNIFOX_API_KEY present: {bool(SNIFOX_API_KEY)}, length: {len(SNIFOX_API_KEY) if SNIFOX_API_KEY else 0}")
 
 
 async def extract_product_entities(description: str) -> dict:
