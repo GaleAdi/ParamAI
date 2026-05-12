@@ -9,11 +9,9 @@
  */
 
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
 import { Shield, User, Lock, ArrowRight, Eye, EyeOff } from 'lucide-react'
 
 export default function LoginPage() {
-  const router = useRouter()
   const [isAdmin, setIsAdmin] = useState(false)
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -35,7 +33,10 @@ export default function LoginPage() {
 
       const data = await res.json()
 
-      if (res.ok) {
+      if (res.ok && data.token) {
+        localStorage.setItem('paramai_token', data.token)
+        localStorage.setItem('paramai_role', data.role)
+        localStorage.setItem('paramai_username', data.username || '')
         window.location.href = '/dashboard'
       } else {
         setError(data.error || 'Login failed')
@@ -56,7 +57,12 @@ export default function LoginPage() {
         body: JSON.stringify({ role: 'guest' }),
       })
 
-      if (res.ok) {
+      const data = await res.json()
+
+      if (res.ok && data.token) {
+        localStorage.setItem('paramai_token', data.token)
+        localStorage.setItem('paramai_role', data.role)
+        localStorage.setItem('paramai_username', '')
         window.location.href = '/simulator'
       } else {
         setError('Guest login failed')
@@ -84,7 +90,6 @@ export default function LoginPage() {
             background: 'linear-gradient(135deg, #384884 0%, #4F6EF7 50%, #6B83F8 100%)',
           }}
         >
-          {/* Logo */}
           <div
             className="w-16 h-16 rounded-2xl flex items-center justify-center text-white font-bold text-2xl mx-auto mb-4"
             style={{
@@ -200,10 +205,7 @@ export default function LoginPage() {
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     className="w-full pl-10 pr-4 py-3 rounded-xl text-sm border transition-colors focus:outline-none focus:ring-2"
-                    style={{
-                      borderColor: '#e5e7eb',
-                      backgroundColor: 'white',
-                    }}
+                    style={{ borderColor: '#e5e7eb', backgroundColor: 'white' }}
                     placeholder="Enter username"
                     required
                   />
@@ -221,10 +223,7 @@ export default function LoginPage() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     className="w-full pl-10 pr-10 py-3 rounded-xl text-sm border transition-colors focus:outline-none focus:ring-2"
-                    style={{
-                      borderColor: '#e5e7eb',
-                      backgroundColor: 'white',
-                    }}
+                    style={{ borderColor: '#e5e7eb', backgroundColor: 'white' }}
                     placeholder="Enter password"
                     required
                   />
@@ -263,10 +262,7 @@ export default function LoginPage() {
             {isAdmin ? (
               'Admin access reserved for authorized personnel only.'
             ) : (
-              <>
-                By continuing, you agree to the{' '}
-                <span style={{ color: '#4F6EF7' }}>terms of use</span>.
-              </>
+              <>By continuing, you agree to the <span style={{ color: '#4F6EF7' }}>terms of use</span>.</>
             )}
           </p>
         </div>
