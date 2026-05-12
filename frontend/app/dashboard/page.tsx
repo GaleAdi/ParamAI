@@ -13,7 +13,12 @@ import { useAuth } from '@/lib/useAuth'
 import Dashboard from '@/components/Dashboard'
 
 function getGreeting() {
-  const hour = new Date().getHours()
+  // Get current time in Indonesia (WIB = UTC+7)
+  const now = new Date()
+  const utc = now.getTime() + (now.getTimezoneOffset() * 60000)
+  const indonesiaTime = new Date(utc + (3600000 * 7)) // UTC+7
+  const hour = indonesiaTime.getHours()
+
   if (hour < 12) return 'Good morning'
   if (hour < 17) return 'Good afternoon'
   return 'Good evening'
