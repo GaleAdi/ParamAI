@@ -3,9 +3,6 @@ const nextConfig = {
   // Enable strict mode for better React practices
   reactStrictMode: true,
 
-  // Optimize for Vercel deployment
-  output: 'standalone',
-
   // Add headers for API reliability
   async headers() {
     return [
