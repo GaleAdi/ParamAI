@@ -1,7 +1,7 @@
 /**
  * ParamAI Frontend — Auth API Route
  * Handles login/logout for admin and guest access
- * Uses signed cookies (no server-side session store needed)
+ * Uses HMAC-signed cookies (no server-side session store needed)
  *
  * Competition: AI Open Innovation Challenge 2026
  * Team: Kebut Semalam, President University
@@ -60,37 +60,24 @@ function validateAdminCredentials(username: string, password: string): boolean {
   return validUsers.some(cred => cred.username === username && cred.password === password)
 }
 
-function makeAuthCookie(payload: string, maxAge: number, isProduction: boolean) {
-  const value = createSignedCookie(payload)
-  return {
-    value,
-    httpOnly: true,
-    secure: isProduction,
-    sameSite: 'lax' as const,
-    path: '/',
-    maxAge,
-  }
-}
-
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
     const { role, username, password } = body
-    const isProd = process.env.NODE_ENV === 'production'
 
     if (role === 'guest') {
       const expiry = Date.now() + 24 * 60 * 60 * 1000
       const payload = `guest:${expiry}`
-      const cookie = makeAuthCookie(payload, 60 * 60 * 24, isProd)
+      const signed = createSignedCookie(payload)
 
       const response = NextResponse.json({
         success: true,
         role: 'guest',
         message: 'Welcome, Guest!',
       })
-      response.cookies.set(COOKIE_NAME, cookie.value, {
+      response.cookies.set(COOKIE_NAME, signed, {
         httpOnly: true,
-        secure: isProd,
+        secure: true,
         sameSite: 'lax',
         path: '/',
         maxAge: 60 * 60 * 24,
@@ -115,15 +102,17 @@ export async function POST(request: NextRequest) {
 
       const expiry = Date.now() + 12 * 60 * 60 * 1000
       const payload = `admin:${expiry}:${username}`
+      const signed = createSignedCookie(payload)
+
       const response = NextResponse.json({
         success: true,
         role: 'admin',
         username,
         message: 'Welcome, Admin!',
       })
-      response.cookies.set(COOKIE_NAME, makeAuthCookie(payload, 60 * 60 * 12, isProd).value, {
+      response.cookies.set(COOKIE_NAME, signed, {
         httpOnly: true,
-        secure: isProd,
+        secure: true,
         sameSite: 'lax',
         path: '/',
         maxAge: 60 * 60 * 12,

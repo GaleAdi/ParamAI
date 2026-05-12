@@ -36,7 +36,7 @@ export default function LoginPage() {
       const data = await res.json()
 
       if (res.ok) {
-        router.push('/dashboard')
+        window.location.href = '/dashboard'
       } else {
         setError(data.error || 'Login failed')
       }
@@ -57,7 +57,7 @@ export default function LoginPage() {
       })
 
       if (res.ok) {
-        router.push('/simulator')
+        window.location.href = '/simulator'
       } else {
         setError('Guest login failed')
       }
