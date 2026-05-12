@@ -3,7 +3,7 @@ ParamAI — Snifox AI Service
 Handles all communication with Snifox AI via OpenAI-compatible API for entity extraction.
 
 Competition: AI Open Innovation Challenge 2026
-Team: Group 1, President University
+Team: Kebut Semalam, President University
 """
 
 import json

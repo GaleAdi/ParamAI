@@ -5,7 +5,7 @@
  * Shows BPOM regulation update status with modal
  *
  * Competition: AI Open Innovation Challenge 2026
- * Team: Group 1, President University
+ * Team: Kebut Semalam, President University
  */
 
 import { useState, useEffect } from 'react'

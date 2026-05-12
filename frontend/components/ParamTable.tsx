@@ -6,7 +6,7 @@
  * Design: Professional SaaS with dark header
  *
  * Competition: AI Open Innovation Challenge 2026
- * Team: Group 1, President University
+ * Team: Kebut Semalam, President University
  */
 
 import { Parameter, ParameterType } from '@/lib/types'

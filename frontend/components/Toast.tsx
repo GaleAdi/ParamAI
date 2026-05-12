@@ -5,7 +5,7 @@
  * Displays success/error/info toast messages
  *
  * Competition: AI Open Innovation Challenge 2026
- * Team: Group 1, President University
+ * Team: Kebut Semalam, President University
  */
 
 import { useEffect, useState } from 'react'

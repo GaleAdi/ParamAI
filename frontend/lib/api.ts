@@ -3,7 +3,7 @@
  * Handles all communication with the ParamAI backend API
  *
  * Competition: AI Open Innovation Challenge 2026
- * Team: Group 1, President University
+ * Team: Kebut Semalam, President University
  */
 
 import {
@@ -61,7 +61,17 @@ async function fetchApi<T>(
 
     // Check for API error response
     if (!response.ok) {
-      const errorMessage = data.detail || `API Error: ${response.status}`
+      let errorMessage = data.detail || `API Error: ${response.status}`
+
+      // Provide helpful messages for common error codes
+      if (response.status === 502 || response.status === 504) {
+        errorMessage = 'Backend is starting up (Railway cold start). Please wait a moment and try again.'
+      } else if (response.status === 404) {
+        errorMessage = 'API endpoint not found. Please check if the backend is running.'
+      } else if (response.status === 500) {
+        errorMessage = 'Backend server error. Please try again in a moment.'
+      }
+
       throw new ApiException(errorMessage, response.status)
     }
 

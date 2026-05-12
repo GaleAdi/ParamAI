@@ -3,7 +3,7 @@ ParamAI — BPOM Rule Engine
 Core matching algorithm that scores BPOM categories against extracted product entities.
 
 Competition: AI Open Innovation Challenge 2026
-Team: Group 1, President University
+Team: Kebut Semalam, President University
 """
 
 import logging

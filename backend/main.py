@@ -3,7 +3,7 @@ ParamAI Backend — FastAPI Entry Point
 AI-Powered BPOM Food Testing Parameter Recommendation System
 
 Competition: AI Open Innovation Challenge 2026
-Team: Group 1, President University
+Team: Kebut Semalam, President University
 """
 
 import json

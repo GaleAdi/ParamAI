@@ -5,7 +5,7 @@
  * Copy regulation citations to clipboard with formatting options
  *
  * Competition: AI Open Innovation Challenge 2026
- * Team: Group 1, President University
+ * Team: Kebut Semalam, President University
  */
 
 import { useState } from 'react'

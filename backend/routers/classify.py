@@ -3,7 +3,7 @@ ParamAI — Classification Router
 POST /classify — Entity extraction only (for testing Claude API)
 
 Competition: AI Open Innovation Challenge 2026
-Team: Group 1, President University
+Team: Kebut Semalam, President University
 """
 
 import logging

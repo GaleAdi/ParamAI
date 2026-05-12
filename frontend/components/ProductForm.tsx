@@ -6,7 +6,7 @@
  * Design: Clean white card with professional SaaS aesthetic
  *
  * Competition: AI Open Innovation Challenge 2026
- * Team: Group 1, President University
+ * Team: Kebut Semalam, President University
  */
 
 import { useState } from 'react'
@@ -265,8 +265,8 @@ export default function ProductForm({ onSubmit, isLoading }: ProductFormProps) {
 
         {/* Sample Products */}
         <div className="mt-4 mb-4">
-          <p className="text-xs font-medium mb-2" style={{ color: '#6b7280' }}>
-            Try sample products:
+          <p className="text-xs font-semibold mb-3" style={{ color: '#384884' }}>
+            ⚡ Quick Start — Try Sample Products:
           </p>
           <div className="flex flex-wrap gap-2">
             {SAMPLE_PRODUCTS.map((sample) => (
@@ -275,27 +275,30 @@ export default function ProductForm({ onSubmit, isLoading }: ProductFormProps) {
                 type="button"
                 onClick={() => handleSampleProduct(sample)}
                 disabled={isLoading}
-                className="px-3 py-1.5 text-xs font-medium rounded-lg transition-all duration-200"
+                className="px-4 py-2 text-sm font-semibold rounded-lg transition-all duration-200 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
                 style={{
-                  border: '1px solid #e5e7eb',
-                  color: '#6b7280',
-                  backgroundColor: 'white',
+                  border: '2px solid #4F6EF7',
+                  color: '#4F6EF7',
+                  backgroundColor: '#eff6ff',
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = '#4F6EF7'
-                  e.currentTarget.style.color = '#4F6EF7'
-                  e.currentTarget.style.backgroundColor = '#eff6ff'
+                  if (!isLoading) {
+                    e.currentTarget.style.backgroundColor = '#4F6EF7'
+                    e.currentTarget.style.color = 'white'
+                  }
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = '#e5e7eb'
-                  e.currentTarget.style.color = '#6b7280'
-                  e.currentTarget.style.backgroundColor = 'white'
+                  e.currentTarget.style.backgroundColor = '#eff6ff'
+                  e.currentTarget.style.color = '#4F6EF7'
                 }}
               >
                 {sample.name}
               </button>
             ))}
           </div>
+          <p className="text-xs mt-2" style={{ color: '#9ca3af' }}>
+            Click any sample to auto-fill the form
+          </p>
         </div>
 
         {/* Submit Button */}
